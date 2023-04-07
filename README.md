@@ -86,6 +86,12 @@ Number of swear words per movie, with the their most used swear word and the per
 | Inglorious Basterds |    58       |  f*ck (11 times)     | 3.4                    |
 | Kill Bill: Vol. 1   |    57       | sh*t (8 times)       | 3.3                    |
 
+At last, a couple of basic graphs to get a glimpse of the data:
+
+![top 5 movies](data/analysis/top5movies.png)
+![top 5 words](data/analysis/top5words.png)
+![words per minutes](data/analysis/words_per_minutes.png)
+
 
 ### Related work
 
