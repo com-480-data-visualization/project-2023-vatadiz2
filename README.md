@@ -78,13 +78,13 @@ Number of swear words per movie, with the their most used swear word and the per
 
 | Movie               | Swear words | Most used swear word | % of total swear words |
 | ------------------- | ----------- | -------------------- | ---------------------- |
-| Pulp Fiction        |   469       |  fucking (133 times) | 27.5                   |
-| Reservoir Dogs      |   421       | fucking (180 times)  | 24.7                   |
-| Jackie Brown        |   368       | shit (66 times)      | 21.6                   |
+| Pulp Fiction        |   469       |  f*cking (133 times) | 27.5                   |
+| Reservoir Dogs      |   421       | f*cking (180 times)  | 24.7                   |
+| Jackie Brown        |   368       | sh*t (66 times)      | 21.6                   |
 | Django Unchained    |   262       | n-word  (114 times)  | 15.4                   |
-| Kill Bill: Vol. 2   |    69       | fucking (19 times)   | 4.0                    |
-| Inglorious Basterds |    58       |  fuck (11 times)     | 3.4                    |
-| Kill Bill: Vol. 1   |    57       | shit (8 times)       | 3.3                    |
+| Kill Bill: Vol. 2   |    69       | f*cking (19 times)   | 4.0                    |
+| Inglorious Basterds |    58       |  f*ck (11 times)     | 3.4                    |
+| Kill Bill: Vol. 1   |    57       | sh*t (8 times)       | 3.3                    |
 
 
 ### Related work
