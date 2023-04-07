@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Cuss counter</title>
+</head>
+<body>
+    
+    <h1>Sit back, relax and watch {{ data }} <small> ... and log the swears :)</small></h1>
+        
+    <div class="box timer">
+        <div>
+            <div id="time">0:00</div>
+            <button id="time_action">Start</button>
+            <button id="time_reset">Reset</button>
+        </div>
+        <div class="retime">
+            <input type="text" name="" id="retime_hour" placeholder="h">:
+            <input type="text" name="" id="retime_min" placeholder="m">:
+            <input type="text" name="" id="retime_sec" placeholder="s">
+            <button id="retime_action">Re-time</button>
+        </div>
+    </div>
+    
+    <div class="box">
+        Click a button to add a word immediately at the current time
+        <div class="starred"></div>
+
+        <div class="word_board"></div>
+        Register a completely new word
+        <div class="new_word">
+            <button id="new_word">+ New word</button>
+        </div>
+    </div>
+
+    <div class="box death">
+        Click to mark the death of a character
+        <button id="dead">DED</button>
+    </div>
+
+    <script>
+        let timestamp_start = 0;
+        let timestamp_paused = 0;
+        let is_timer_running = false;
+
+        let interv = null;
+
+        let time = document.getElementById("time");
+        let time_action = document.getElementById("time_action");
+        let time_reset = document.getElementById("time_reset");
+
+        let retime_hour = document.getElementById("retime_hour");
+        let retime_min = document.getElementById("retime_min");
+        let retime_sec = document.getElementById("retime_sec");
+        let retime_action = document.getElementById("retime_action");
+
+        let word_board = document.getElementsByClassName("word_board")[0];
+        let new_word = document.getElementById("new_word");
+        let dead = document.getElementById("dead");
+
+        let word_board_starred = document.getElementsByClassName("starred")[0];
+
+        let words = ["dick", "dicks", "fucked", "fucking", "bullshit", "fuck", "shit", "motherfucker", "pussy", "fucks", "hell", "jap", "bastard", "goddamn", "motherfuckers", "asshole", "ass", "assholes", "n-word", "asses", "bitch", "fuckup", "fucker", "shitty", "asshead" , "damn", "damned", "bitches", "wetback" , "faggot", "fuckers", "dickless", "chickensh", "fuckhead", "shithead", "negro", "slut", "goddamned", "dumbass"];
+
+        // Wordboard buttons
+        words.forEach(w => {
+            let btn = create_word(w);
+            // append at start of word_board
+            word_board.insertBefore(btn, word_board.firstChild);
+        });
+
+        // Time action button
+        time_action.addEventListener("click", function(){
+            if (time_action.innerHTML == "Start" || time_action.innerHTML == "Resume"){
+                time_action.innerHTML = "Pause";
+                is_timer_running = true;
+                timestamp_start += Date.now() - timestamp_paused;
+                time.innerHTML = get_formatted_time();
+                interv = setInterval(update_time, 1000);
+            } else if (time_action.innerHTML == "Pause"){
+                clearInterval(interv);
+                time_action.innerHTML = "Resume";
+                is_timer_running = false;
+                timestamp_paused = Date.now();
+            }
+        });
+
+        // Time reset button
+        time_reset.addEventListener("click", function(){
+            clearInterval(interv);
+            time_action.innerHTML = "Start";
+            is_timer_running = false;
+            timestamp_start = 0;
+            timestamp_paused = 0;
+            time.innerHTML = "0:00";
+        });
+
+        // Re-time button
+        retime_action.addEventListener("click", function(){
+            time_action.innerHTML = "Pause";
+            clearInterval(interv);
+            is_timer_running = true;
+
+            let hour = parseInt(retime_hour.value ? retime_hour.value : 0);
+            let min = parseInt(retime_min.value ? retime_min.value : 0);
+            let sec = parseInt(retime_sec.value ? retime_sec.value : 0);
+
+            let time_in = (hour * 3600 + min * 60 + sec) * 1000;
+
+            // add milliseconds to the current time and set it as the new start time
+            time_in += Date.now() % 1000;
+
+            // Substract time_in from the current time and set it as the new start time
+            timestamp_start = Date.now() - time_in;
+            time.innerHTML = get_formatted_time();
+            interv = setInterval(update_time, 1000);
+        });
+
+        // New word button
+        new_word.addEventListener("click", function(){
+            let at_time = get_minutes_in();
+            let word = prompt("Enter a new word (enter empty to cancel)");
+            // Trim the word
+            if (word == null || word.trim() == "" ){
+                return;
+            }
+            word = word.trim();
+            let req = new XMLHttpRequest();
+            req.open("GET", "/add/word/" + word + "/" + at_time, true);
+            req.send();
+
+            // add the new word to the wordboard if it is not already in the words list
+            if (!words.includes(word)){
+                let btn = create_word(word);
+                word_board.insertBefore(btn, word_board.firstChild);
+            }
+        });
+
+        // Dead button
+        dead.addEventListener("click", function(){
+            let at_time = get_minutes_in();
+            let req = new XMLHttpRequest();
+            req.open("GET", "/add/death/" + at_time, true);
+            req.send();
+        });
+
+        function get_minutes_in(){
+            let formatted = get_formatted_time();
+            let minutes = 0;
+            if (formatted.split(":").length == 3){
+                let hours = parseInt(formatted.split(":")[0]);
+                minutes += hours * 60;
+                minutes += parseInt(formatted.split(":")[1]);
+                minutes += parseInt(formatted.split(":")[2]) / 60;
+            } else {
+                minutes += parseInt(formatted.split(":")[0]);
+                minutes += parseInt(formatted.split(":")[1]) / 60;
+            }
+            minutes = Math.round(minutes * 100) / 100;
+            return minutes;
+        }
+
+        function update_time(){
+            if (!is_timer_running){
+                return;
+            }
+            time.innerHTML = get_formatted_time();
+        }
+
+        function get_formatted_time(){
+            if(!is_timer_running){
+                return time.innerHTML;
+            }
+            let time_diff = Math.floor((Date.now() - timestamp_start) / 1000.0);
+            let hours = Math.floor(time_diff / 3600);
+            let minutes = Math.floor((time_diff % 3600) / 60);
+            let seconds = Math.floor(time_diff % 60);
+            // only display hours if there are any
+            if (hours > 0){
+                return hours + ":" + (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+            } else {
+                return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+            }
+        }
+
+        function create_word(word){
+            let btn = document.createElement("button");
+            btn.innerHTML = word;
+
+            btn.addEventListener("click", function(){
+                // Move button at beginning of word_board_starred
+                word_board_starred.insertBefore(btn, word_board_starred.firstChild);
+                reset_starboard();
+
+                // Create a get request as /add/word/<word>/<minutes_in>
+                let req = new XMLHttpRequest();
+                req.open("GET", "/add/word/" + word + "/" + get_minutes_in(), true);
+                req.send();
+            });
+
+            return btn;
+        }
+
+        function reset_starboard(){
+            // If more than 5 elements, add last one back to word_board
+            while (word_board_starred.children.length > 5){
+                let btn = word_board_starred.lastChild;
+                word_board_starred.removeChild(btn);
+                word_board.insertBefore(btn, word_board.firstChild);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
+
+<style>
+    body{
+        background-color: rgb(242, 242, 242);
+        display: grid;
+        gap: 0.5em;
+        font-family: 'Bitter', serif;
+        font-size: 1.2em;
+        margin: 1em;
+    }
+
+    .box{
+        background-color: white;
+        padding: 1.2em;
+        border-radius: 0.8em;
+        display: grid;
+        gap: 0.5em;
+        box-shadow: 3px 5px 9px rgba(0,0,0,0.2);
+    }
+    
+    .word_board,
+    .starred{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2em;
+    }
+
+    #time{
+        font-size: 2.2em;
+        font-weight: bold;
+    }
+
+    #dead{
+        background-color: rgb(225, 51, 48);
+        color: white;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .retime{
+        display: flex;
+        gap: 0.2em;
+    }
+
+    .retime input{
+        width: 2em;
+    }
+
+    .disabled{
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    button, input{
+        font-family: inherit;
+        border: none;
+        padding: 0.5em;
+        cursor: pointer;
+        border-radius: 0.2em;
+        background-color: rgb(226, 226, 226);
+    }
+
+    @keyframes glid {
+        0%{
+            background-position: -500px center;
+        }
+        100%{
+            background-position: 500px center;
+        }
+    }
+
+    button:hover{
+        opacity: 0.7;
+    }
+
+    small{
+        opacity: 0.5;
+        font-size: 0.5em;
+    }
+
+    .starred button{
+        border: 2.3px solid rgb(255, 184, 84);
+        background-color: rgb(255, 205, 79);
+        font-size: 1em;
+
+        background-image: url('/static/glid.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        animation: glid 4s infinite;
+    }
+</style>
