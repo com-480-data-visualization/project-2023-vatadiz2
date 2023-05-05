@@ -89,3 +89,19 @@ header p{
     max-width: 650px;
     font-size: 1.1em;
 }
+
+.square {
+    width: 7vw;
+    height: 7vw;
+    background-color: #ccc;
+    display: inline-block;
+    margin: 5px;
+}
+
+.empty-square {
+    width: 7vw;
+    height: 7vw;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #ccc;
+}
