@@ -1,0 +1,91 @@
+:root{
+    --bg: #1f1f1f;
+    --panel: #2f2f2f;
+    --text: #e9e7e6;
+    --text-soft: #aaa3a1;
+    --accent: #ffc609;
+}
+
+@font-face {
+    font-family: 'Traveling Typwriter';
+    src: url('../fonts/TravelingTypewriter.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Hollywood Capital';
+    src: url('../fonts/Hollywood\ Capital.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Zen;
+    src: url('../fonts/ZenKurenaido-Regular.ttf') format('truetype');
+}
+
+
+body{
+    background-color: var(--bg);
+    color: var(--text-soft);
+    font-family: 'Zen';
+    font-size: 1.4em;
+    background-image: url('../img/bg_full.jpg');
+    background-size: 120%;
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+h1,h2,h3,h4,p{
+    margin: 0;
+}
+
+
+h1{
+    font-family: 'Traveling Typwriter';
+    font-size: 3.5em;
+    font-weight: normal;
+    color: var(--text);
+    margin-bottom: 0.2em;
+}
+
+h1 small{
+    font-size: 0.5em;
+    font-weight: normal;
+    color: var(--text-soft);
+    margin-bottom: 0.5em;
+    display: inline-block;
+}
+
+h1 .cuss{
+    /* background-color: var(--panel); */
+    font-family: 'Hollywood Capital';
+    color: var(--accent);
+    border: 0 solid var(--accent);
+    border-width: 0.1em 0;
+    font-size: 1.25em;
+    padding: 0em 0.15em;
+    display: inline-block;
+    /* text-shadow: 5px 5px var(--text); */
+    transform: rotate(-2deg) scale(1.1);
+    clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%);
+}
+
+header{
+    height: 80vh;
+    display: grid;
+    font-family: 'Traveling Typwriter';
+}
+
+header br{
+    margin: 0;
+}
+
+header>div{
+    max-width: 900px;
+    display: grid;
+    gap: 1em;
+    margin: auto;
+}
+
+header p{
+    max-width: 650px;
+    font-size: 1.1em;
+}
