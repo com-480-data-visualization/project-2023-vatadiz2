@@ -90,18 +90,84 @@ header p{
     font-size: 1.1em;
 }
 
-.square {
-    width: 7vw;
-    height: 7vw;
-    background-color: #ccc;
-    display: inline-block;
-    margin: 5px;
+/* Reel design */
+.reel{
+    display: grid;
+    max-width: 1000px;
+    border-radius: 1em;
+    overflow: hidden;
+    margin: 5em auto;
+    box-shadow: 2em 2em 3em rgba(0,0,0,0.4);
 }
 
-.empty-square {
-    width: 7vw;
-    height: 7vw;
-    display: inline-block;
-    margin: 5px;
-    border: 1px solid #ccc;
+.reel .line{
+    display: grid;
+    grid-template-columns: 6em auto 6em; 
+
+}
+
+.reel .side{
+    background-color: rgb(56, 56, 56);
+    display: grid;
+}
+
+.reel .side .punch-hole{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3em;
+    border-radius: 1em;
+    margin: 0.8em;
+    background-color: rgb(72, 71, 71);
+}
+
+.reel .data{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    background-color: rgb(30,30,30);
+    overflow: hidden;
+}
+
+.reel .line-top .data::before{
+    content: '';
+    display: block;
+    background-color: rgb(40, 40, 40);
+    top: 1em;
+    width: calc(100% - 2em);
+    margin: 1em 1em 0 1em;
+    height: 100%;
+    border-radius: 1em 1em 0 0;
+}
+
+.reel .line-middle .data::before{
+    content: '';
+    display: block;
+    background-color: rgb(40, 40, 40);
+    top: 1em;
+    width: calc(100% - 2em);
+    margin: 0 1em 0 1em;
+    height: 100%;
+}
+
+.reel .line-bottom .data::before{
+    content: '';
+    display: block;
+    background-color: rgb(40, 40, 40);
+    bottom: 1em;
+    width: calc(100% - 2em);
+    margin: 0 1em 1em 1em;
+    height: 100%;
+    border-radius: 0 0 1em 1em;
+}
+
+.reel .data .data-field{
+    height: 100%;
+}
+
+.reel .data .data-dot{
+    background-color: rgb(242, 177, 47);
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    margin: auto;
 }
