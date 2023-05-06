@@ -105,7 +105,8 @@ We also plan on adding an extra layer of interactivity, instead of simply presen
 
 ## Milestone 2 (7th May, 5pm)
 
-**10% of the final grade**
+Please find our PDF file for the milestone 2 here: [milestone2.pdf](milestone2.pdf)
+You can find a demo prototype of our visualization here, which is only here to get a general feeling and look of the project: [https://go.epfl.ch/tarantino](https://go.epfl.ch/tarantino)
 
 
 ## Milestone 3 (4th June, 5pm)
