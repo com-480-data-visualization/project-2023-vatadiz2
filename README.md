@@ -106,7 +106,8 @@ We also plan on adding an extra layer of interactivity, instead of simply presen
 ## Milestone 2 (7th May, 5pm)
 
 Please find our PDF file for the milestone 2 here: [milestone2.pdf](milestone2.pdf)
-You can find a demo prototype of our visualization here, which is only here to get a general feeling and look of the project: [https://go.epfl.ch/tarantino](https://go.epfl.ch/tarantino)
+
+You can find a demo prototype of our visualization here [https://go.epfl.ch/tarantino](https://go.epfl.ch/tarantino), which is only here to get a general feeling and look of the project. However, it does not include the actual data, the interactable elements, the movie reel is truncated at 6, no colors on the reel for different movies, etc.
 
 
 ## Milestone 3 (4th June, 5pm)
