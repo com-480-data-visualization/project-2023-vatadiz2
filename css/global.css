@@ -72,6 +72,7 @@ header{
     height: 80vh;
     display: grid;
     font-family: 'Traveling Typwriter';
+    min-height: 600px;
 }
 
 header br{
@@ -122,52 +123,65 @@ header p{
 }
 
 .reel .data{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
     background-color: rgb(30,30,30);
     overflow: hidden;
+    position: relative;
+}
+
+.reel .data::before{
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: rgb(40, 40, 40);
+    height: 100%;
+    left: 1em;
+    right: 1em; 
+    z-index: -1;
 }
 
 .reel .line-top .data::before{
-    content: '';
-    display: block;
-    background-color: rgb(40, 40, 40);
     top: 1em;
-    width: calc(100% - 2em);
-    margin: 1em 1em 0 1em;
-    height: 100%;
     border-radius: 1em 1em 0 0;
 }
 
-.reel .line-middle .data::before{
-    content: '';
-    display: block;
-    background-color: rgb(40, 40, 40);
-    top: 1em;
-    width: calc(100% - 2em);
-    margin: 0 1em 0 1em;
-    height: 100%;
-}
-
 .reel .line-bottom .data::before{
-    content: '';
-    display: block;
-    background-color: rgb(40, 40, 40);
     bottom: 1em;
-    width: calc(100% - 2em);
-    margin: 0 1em 1em 1em;
-    height: 100%;
     border-radius: 0 0 1em 1em;
 }
 
+
 .reel .data .data-field{
     height: 100%;
+    width: 100%;
+    display: flex;
 }
 
 .reel .data .data-dot{
-    background-color: rgb(242, 177, 47);
     border-radius: 50%;
     width: 0.5em;
     height: 0.5em;
+    display: block;
     margin: auto;
+    background-color: var(--accent);
+}
+
+.reel .data .data-dot.large{
+    transform: scale(2.5);
+}
+
+.graphs{
+    max-width: 700px;
+    margin: auto;
+    display: grid;
+}
+
+.graphs img{
+    filter: invert(1);
+    width: 100%;
+}
+
+.section{
+    font-size: 0.8em;
+    text-align: center;
 }
