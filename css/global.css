@@ -122,6 +122,17 @@ header p{
     background-color: rgb(72, 71, 71);
 }
 
+.reel .side .punch-hole img {
+    max-width: 100%; /* Adjust the width as needed */
+    max-height: 70%; /* Adjust the height as needed */
+    margin: auto 0 auto 0;
+    filter: invert(100%) sepia(100%) saturate(17%) hue-rotate(214deg) brightness(105%) contrast(100%);
+    /*https://change-svg-color.vercel.app*/
+
+}
+
+
+
 .reel .data{
     display: flex;
     background-color: rgb(30,30,30);
@@ -174,6 +185,18 @@ header p{
     max-width: 700px;
     margin: auto;
     display: grid;
+    /* Set the graph width and height */
+    --graphWidth: 700px;
+    --graphHeight: 100px;
+
+    /* Set the padding for the graph */
+    --padding: 20px;
+
+    /* Set the dot radius */
+    --dotRadius: 5px;
+
+    /* Set the dot color */
+    --dotColor: var(--accent);
 }
 
 .graphs img{
