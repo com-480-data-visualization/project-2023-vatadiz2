@@ -92,18 +92,24 @@ header p{
 }
 
 /* Reel design */
-.reel{
+.reel-box{
     display: grid;
-    max-width: 1000px;
+    max-width: 1100px;
     border-radius: 1em;
-    overflow: hidden;
     margin: 5em auto;
     box-shadow: 2em 2em 3em rgba(0,0,0,0.4);
 }
 
+.reel{
+    display: grid;
+    border-radius: 1em;
+    box-shadow: 2em 2em 3em rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
 .reel .line{
     display: grid;
-    grid-template-columns: 6em auto 6em; 
+    grid-template-columns: 120px auto 120px; 
 
 }
 
@@ -135,6 +141,8 @@ header p{
     display: flex;
     background-color: rgb(30,30,30);
     position: relative;
+    padding: 0 0.25em;
+    gap: 0.25em;
 }
 
 .reel .data::before{
@@ -143,18 +151,18 @@ header p{
     display: block;
     background-color: rgb(40, 40, 40);
     height: 100%;
-    left: 1em;
-    right: 1em; 
+    left: 0.5em;
+    right: 0.5em;
     z-index: 0;
 }
 
 .reel .line-top .data::before{
-    top: 1em;
+    top: 0.25em;
     border-radius: 1em 1em 0 0;
 }
 
 .reel .line-bottom .data::before{
-    bottom: 1em;
+    bottom: 0.25em;
     border-radius: 0 0 1em 1em;
 }
 
@@ -167,8 +175,7 @@ header p{
 
 .reel .data .data-dot{
     border-radius: 50%;
-    width: 0.5em;
-    height: 0.5em;
+    aspect-ratio: 1;
     display: block;
     margin: auto;
     background-color: var(--accent);
@@ -178,12 +185,12 @@ header p{
 }
 
 
-.reel .data .data-field.hidden .data-dot{
+.reel .data .data-dot.hidden{
     /* initially hidden */
     transform: scale(0); 
 }
 
-.reel .data .data-field.appear .data-dot{
+.reel .data .data-dot.appear{
     animation: dot-appear 0.2s ease-out;
 }
 
@@ -253,8 +260,8 @@ header p{
     /* filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.4)); */
     border-radius: 0.25em;
     font-family: 'hollywood capital';
-    font-size: 1.6em;
-    z-index: 100;
+    font-size: 1.3em;
+    z-index: 3;
     animation: modalGlide 0.3s ease-out;
 }
 
@@ -310,4 +317,57 @@ header p{
 
 .popup-reel>div>span>small{
     margin-right: 0.2em;
+}
+
+/* Bottom nav */
+.reel-box nav{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25em;
+    position: sticky;
+    bottom: -150px;
+    max-width: calc(1100px - 240px - 0.5em);
+    width: 100%;
+    margin: auto;
+    z-index: 2;
+}
+
+.reel-box nav>div{
+    flex: 1 1 0px;
+    display: grid;
+    font-family: 'hollywood capital';
+    text-align: center;
+    background-color: rgb(18, 18, 18);
+    font-size: 0.5em;
+    transition: transform 0.15s ease-out;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.reel-box nav>div:hover{
+    transform: translateY(-150px);
+}
+
+.reel-box nav h2{
+    padding: 0.4em;
+    align-self: center;
+}
+
+.reel-box nav img{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    align-self: flex-end;
+    opacity: 0.3;
+    filter: grayscale(1);
+    transition: 0.2s;
+}
+
+.reel-box nav>div:hover img{
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+.reel-box nav.hide{
+    display: none;
 }

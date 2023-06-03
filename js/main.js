@@ -19,13 +19,13 @@ var maxNumberOfSwears = 0;
 var maxMinutes = 0;
 
 const movieColors = {
-    'Reservoir Dogs': '#FF0000',
-    'Pulp Fiction': '#FFA500',
-    'Jackie Brown': '#FFFF00',
-    'Kill Bill: Vol. 1': '#008000',
-    'Kill Bill: Vol. 2': '#0000FF',
-    'Inglorious Basterds': '#EE82EE',
-    'Django Unchained': '#FFC0CB',
+    'Reservoir Dogs': 'rgb(164,157,156)',
+    'Pulp Fiction': 'rgb(208,202,203)',
+    'Jackie Brown': 'rgb(201,144,108)',
+    'Kill Bill: Vol. 1': 'rgb(243,210,72)',
+    'Kill Bill: Vol. 2': 'rgb(205,63,51)',
+    'Inglorious Basterds': 'rgb(195,185,156)',
+    'Django Unchained': 'rgb(213,178,85)',
   };
 
 // Load the CSV file into the script
@@ -40,7 +40,6 @@ d3.csv("data/tarantino.csv", (data) => {
     });
     //console.log(dataset);
 });
-
 
 // Create a nested array based on movie titles
 const processData = (data) => {
@@ -102,6 +101,11 @@ const processData = (data) => {
     generateLines(processedData);
     generateGraphMovies(processedData);
     // console.log(processedData);
+
+    // Load movie data for movie popup
+    d3.json("data/movies.json", (data) => {
+        generateMoviePopup(data, processedData);
+    });
   };
 
   // Load the CSV file
@@ -159,8 +163,10 @@ const generateLines = (processedData) => {
                     span.style.outlineColor = movieColors[movieTitle];
                     span.classList.add('data-dot');
                     span.style.width = `${((minutes[i].words.length / maxNumberOfSwears) * 90) + 10}%`;
-                    span.style.height = `${((minutes[i].words.length / maxNumberOfSwears) * 90) + 10}%`;
                     dataField.appendChild(span);
+
+                    // Add modal effect at the current minute
+                    setupModalForDot(span, minutes[i], color);
                 }
                 if (minutes[i].deaths > 0) {
                     hasDeath = true;
@@ -169,10 +175,6 @@ const generateLines = (processedData) => {
             }
             dataDiv.appendChild(dataField);
 
-            // Add modal effect if there are words at the current minute
-            if (minutes[i] && minutes[i].words.length > 0) {
-                setupModalForDot(dataField, minutes[i], color);
-            }
         });
 
         const endSideClass = document.createElement('div');
@@ -302,6 +304,14 @@ function setupModalForDot(dotEl, data, color){
         return box;
     }
 }
+
+
+
+
+
+
+
+
 
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv", function(data) {
     console.log(data.price);
@@ -445,4 +455,53 @@ svg
 
       console.log(graphContainer);
 };
-  
+
+/**
+ * Generate the bottom popup tab for the movies
+ * @param {*} data data on the movies
+ * @param {*} wordsData only to get order of movies
+ * 
+ */
+function generateMoviePopup(data, wordsData){
+    const reel = document.querySelector('.reel-box'); // The main box container
+
+    console.log(wordsData);
+
+    // Create the popup container
+    let nav = document.createElement("nav");
+
+    // for all keys as movies and values
+    wordsData.forEach((entry) => {
+        let title = entry.movieTitle;
+        let mData = data[title];
+        console.log("ag");
+        console.log(mData);
+        console.log(title);
+
+        // Create the movie tabs
+        let movie = document.createElement("div");
+        let t = document.createElement("h2");
+        t.innerText = title;
+        t.style.color = movieColors[title];
+        let img = document.createElement("img");
+        img.src = "img/movies/cover/" + mData.code + ".png";
+
+        // Append the elements to the movie tab
+        movie.appendChild(t);
+        movie.appendChild(img);
+        nav.appendChild(movie);
+    });
+
+    // Append the popup to the body
+    reel.appendChild(nav);
+
+    // Hide scrollbar if reached the end of reel
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight >= reel.getBoundingClientRect().bottom) {
+            nav.classList.add('hide');
+        } else {
+            nav.classList.remove('hide');
+        }
+    });
+
+}

@@ -1,0 +1,45 @@
+{
+    "Reservoir Dogs": {
+        "code": "rd",
+        "year": 1992,
+        "synopsys": "After a simple jewelery heist goes terribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
+        "runtime": 99
+    },
+    "Pulp Fiction": {
+        "code": "pf",
+        "year": 1994,
+        "synopsys": "Test",
+        "runtime": 154
+    },
+    "Jackie Brown": {
+        "code": "jb",
+        "year": 1997,
+        "synopsys": "Test again",
+        "runtime": 10
+    },
+    "Kill Bill: Vol. 1": {
+        "code": "kb1",
+        "year": 2003,
+        "synopsys": "Test again",
+        "runtime": 10
+    },
+    "Kill Bill: Vol. 2": {
+        "code": "kb2",
+        "year": 2004,
+        "synopsys": "Test again",
+        "runtime": 10
+    },
+    "Inglorious Basterds": {
+        "code": "ib",
+        "year": 2009,
+        "synopsys": "Test again",
+        "runtime": 10
+    },
+    "Django Unchained": {
+        "code": "du",
+        "year": 2012,
+        "synopsys": "Test again",
+        "runtime": 10
+    }
+
+}
