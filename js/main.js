@@ -73,8 +73,14 @@ const processData = (data) => {
           };
         }
   
+        // Word is stored with the accurate minute as well
         if (d.type === 'word') {
-          minutes[minutesIn].words.push(d.word);
+            let wData = {
+                word: d.word,
+                timestamp: d.minutes_in
+            }
+            minutes[minutesIn].words.push(wData);
+        //   minutes[minutesIn].words.push(d.word);
         } else if (d.type === 'death') {
           minutes[minutesIn].deaths++;
         }
@@ -104,11 +110,19 @@ d3.csv("data/tarantino.csv", processData);
 // Step 1: Define a function to generate the lines based on processedData
 const generateLines = (processedData) => {
     
-  
     // Create the lines based on the maximum number of minutes
+    let absLineCount = 0;
     for (let i = 1; i <= maxMinutes; i++) {
-        // console.log(i);
-        const lineClass = i === 0 ? 'line-top' : i === maxMinutes ? 'line-bottom' : 'line-middle';
+        
+        // Determine the line class for styling
+        let lineClass = 'line-middle';
+        if(absLineCount % 5 == 0) {
+            lineClass = 'line-top';
+        } else if (absLineCount % 5 == 4) {
+            lineClass = 'line-bottom';
+        }
+
+
         const line = document.createElement('div');
         line.classList.add('line', lineClass);
         const sideClass = document.createElement('div');
@@ -142,6 +156,7 @@ const generateLines = (processedData) => {
                 if (minutes[i].words.length > 0) {
                     const span = document.createElement('span');  
                     span.style.backgroundColor = movieColors[movieTitle];
+                    span.style.outlineColor = movieColors[movieTitle];
                     span.classList.add('data-dot');
                     span.style.width = `${((minutes[i].words.length / maxNumberOfSwears) * 90) + 10}%`;
                     span.style.height = `${((minutes[i].words.length / maxNumberOfSwears) * 90) + 10}%`;
@@ -153,6 +168,11 @@ const generateLines = (processedData) => {
                 }
             }
             dataDiv.appendChild(dataField);
+
+            // Add modal effect if there are words at the current minute
+            if (minutes[i] && minutes[i].words.length > 0) {
+                setupModalForDot(dataField, minutes[i], color);
+            }
         });
 
         const endSideClass = document.createElement('div');
@@ -184,8 +204,104 @@ const generateLines = (processedData) => {
     //   console.log(line);
       // Append the line to the reel
       document.querySelector('.reel').appendChild(line);
+
+        absLineCount++;
     }
 };
+
+/**
+ * Creates the modal effect binds for the dot
+ * @param {*} dotEl 
+ * @param {*} data data with the words for this minute/movie
+ */
+function setupModalForDot(dotEl, data, color){
+    const modalHolder = document.getElementById('reelPopup');
+
+    // Modal creation
+    let modal = createModal(data);
+
+    // Setup event listeners
+    dotEl.addEventListener('mouseenter', () => {
+        modalHolder.appendChild(modal);
+    });
+
+    dotEl.addEventListener('mouseleave', () => {
+        modalHolder.removeChild(modal);
+    });
+
+    // On move, update the position of the modal
+    dotEl.addEventListener('mousemove', (e) => {
+        // Take into account the scroll position
+        modal.style.left = e.clientX + 40 + 'px';
+        modal.style.top = e.clientY - 15 + window.scrollY + 'px';
+    });
+
+    // Event listener on scroll to make dot appear when reached bottom of screen
+    dotEl.classList.add('hidden');
+
+    window.addEventListener('scroll', () => {
+        if (dotEl.getBoundingClientRect().top < window.innerHeight - 100) {
+            dotEl.classList.add('appear');
+            dotEl.classList.remove('hidden');
+        }
+    });
+
+
+    /**
+     * Create the modal element for this specific dot
+     * @param {*} d 
+     * @returns 
+     */
+    function createModal(d) {
+        let box = document.createElement('div');
+        box.classList.add('popup-reel');
+
+        // Group words by count
+        let wordsByCount = d3.nest()
+            .key((d) => d.word)
+            .rollup((v) => v.length)
+            .entries(d.words);
+
+        // Order by count
+        wordsByCount.sort((a, b) => b.value - a.value);
+
+        // For each of the words create the element for the modal
+        let i = 0;
+        wordsByCount.forEach((word) => {
+            // Create a list item
+            let el = document.createElement('div');
+            
+            // Word and count
+            let nb = document.createElement('span');
+            nb.innerHTML = "<small>x</small>" + word.value + " " + word.key;
+
+            // Timestamp(s)
+            let timestamps = document.createElement('small');
+            timestamps.classList.add('time');
+
+            let tsList = [];
+            let onyWord = d.words.filter((w) => w.word == word.key);
+            onyWord.forEach((w) => {
+                // only seconds
+                tsList.push(Math.floor(w.timestamp * 60 % 60));
+            });
+
+            timestamps.textContent += "at ";
+            timestamps.textContent += tsList.join(', ');
+            timestamps.textContent += " sec";
+
+            el.appendChild(nb);
+            el.appendChild(timestamps);
+            box.appendChild(el);
+
+            el.style.animationDelay = i * 0.05 + 's';
+
+            i++;
+        });
+        
+        return box;
+    }
+}
 
 d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv", function(data) {
     console.log(data.price);

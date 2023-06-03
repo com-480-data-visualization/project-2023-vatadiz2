@@ -131,12 +131,9 @@ header p{
 
 }
 
-
-
 .reel .data{
     display: flex;
     background-color: rgb(30,30,30);
-    overflow: hidden;
     position: relative;
 }
 
@@ -148,7 +145,7 @@ header p{
     height: 100%;
     left: 1em;
     right: 1em; 
-    z-index: -1;
+    z-index: 0;
 }
 
 .reel .line-top .data::before{
@@ -175,6 +172,37 @@ header p{
     display: block;
     margin: auto;
     background-color: var(--accent);
+    z-index: 1;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.reel .data .data-field.hidden .data-dot{
+    /* initially hidden */
+    transform: scale(0); 
+}
+
+.reel .data .data-field.appear .data-dot{
+    animation: dot-appear 0.2s ease-out;
+}
+
+@keyframes dot-apprear {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.reel .data .data-dot:hover{
+    transform: scale(1.2);
+    /* add outline */
+    outline-width: 0.3em;
+    outline-style: solid;
+    outline-offset: 0.2em;
+    transition: 0.2s;
 }
 
 .reel .data .data-dot.large{
@@ -207,4 +235,79 @@ header p{
 .section{
     font-size: 0.8em;
     text-align: center;
+}
+
+
+/* Popup for reel swear words info */
+#popup-reel-holder{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.popup-reel{
+    position: absolute;
+    max-width: 640px;
+    background-color: rgb(50,50,50);
+    padding: 0.4em 0.5em;
+    /* filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.4)); */
+    border-radius: 0.25em;
+    font-family: 'hollywood capital';
+    font-size: 1.6em;
+    z-index: 100;
+    animation: modalGlide 0.3s ease-out;
+}
+
+@keyframes modalGlide {
+    from {
+        transform: translateX(40px) rotate(5deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.popup-reel::before{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: -30px;
+    width: 40px;
+    height: 10px;
+    background-color: rgb(50,50,50);
+    z-index: -1;
+    border-radius: 20px;
+}
+
+.popup-reel>div{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    animation: glideinword 0.2s ease-out;
+    animation-fill-mode: backwards;
+}
+
+.popup-reel .time{
+    margin-left: auto;
+    letter-spacing: -0.05em;
+    font-size: 0.5em;
+    opacity: 0.5;
+    font-family: Zen;
+}
+
+@keyframes glideinword {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.popup-reel>div>span>small{
+    margin-right: 0.2em;
 }
