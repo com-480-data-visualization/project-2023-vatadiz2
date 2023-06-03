@@ -190,7 +190,7 @@ const generateLines = (processedData, counterRefs) => {
             count.textContent = numberDeaths.toString() + "x";
             count.style.color = "white";
             count.style.fontStyle = "bold";
-            skull.src = 'assets/skull.svg';
+            skull.src = 'img/skull.svg';
             endPunchHoleDiv.appendChild(count);
             endPunchHoleDiv.appendChild(skull);
             // const svgPath = 'assets/skull.svg';
@@ -535,6 +535,11 @@ function generateMoviePopup(data, wordsData){
         movie.appendChild(t);
         movie.appendChild(img);
         nav.appendChild(movie);
+
+        // Create on click event to show movie info panel
+        movie.addEventListener('click', () => {
+            openInfoModal(mData);
+        });
     });
 
     // Append the popup to the body
@@ -552,3 +557,107 @@ function generateMoviePopup(data, wordsData){
     return movieCounters;
 
 }
+
+/**
+ * Opens or closes the info modal with the movie's data
+ * @param {*} data data on the movie, or null if closing
+ */
+function openInfoModal(data = null){
+    console.log(data);
+    let modal = document.querySelector('.info-layer');
+    if(data == null) {
+        modal.classList.remove('open');
+        return;
+    }
+    modal.classList.add('open');
+
+    // List element index for animation
+    let liDelay = 5; // Start with a small delay
+
+    // Close button
+    let close = document.createElement("img");
+    close.src = "img/back.svg";
+    close.classList.add("back");
+    close.addEventListener('click', () => {
+        openInfoModal(null);
+    });
+
+    // Title line
+    let main = modal.querySelector('main');
+    main.innerHTML = ""; // Clear the main
+
+    let titleArea = document.createElement("h1");
+    let runtime = Math.floor(data.runtime / 60) + "h" + data.runtime % 60;
+    titleArea.innerHTML = `<strong>${data.title}</strong> <small>(${data.year})</small> <span class="time">${runtime}</span>`;
+    titleArea.prepend(close);
+
+    // Synopsis box
+    let synopsis = document.createElement("div");
+    synopsis.classList.add("synopsis");
+
+    let innerS = document.createElement("div");
+    innerS.innerHTML = "<h2>Synopsis</h2>";
+    innerS.innerHTML += `<p>${data.synopsis}</p>`;
+
+    let img = document.createElement("img");
+    img.src = "img/movies/header/" + data.code + ".png";
+    synopsis.appendChild(innerS);
+    synopsis.appendChild(img);
+
+    // Actors box
+    let actors = document.createElement("div");
+    actors.innerHTML = "<h3>Actors</h3>";
+    let aList = document.createElement("ul");
+    data.actors.forEach((actor) => {
+        let li = document.createElement("li");
+        li.innerHTML = `<b>${actor.name}</b> as (${actor.role})`;
+        li.style.animationDelay = (liDelay * 0.05) + "s";
+        aList.appendChild(li);
+        liDelay++;
+    });
+    actors.appendChild(aList);
+
+    // Fun facts box
+    let funFacts = document.createElement("div");
+    funFacts.innerHTML = "<h3>Fun facts</h3>";
+    let fList = document.createElement("ul");
+    data.funfacts.forEach((fact) => {
+        let li = document.createElement("li");
+        li.innerText = fact;
+        li.style.animationDelay = (liDelay * 0.05) + "s";
+        fList.appendChild(li);
+        liDelay++;
+    });
+    funFacts.appendChild(fList);
+
+    // Append all to the main
+    main.appendChild(titleArea);
+    main.appendChild(synopsis);
+    main.appendChild(actors);
+    main.appendChild(funFacts);
+}
+
+// Other closing actions
+// Clicking outside the info modal closes it
+let infoLayer = document.querySelector('.info-layer');
+infoLayer.addEventListener('click', (e) => {
+    if(e.target.classList.contains('info-layer')) {
+        openInfoModal(null);
+    }
+});
+
+// Scrolling closes the info modal
+window.addEventListener('scroll', (e) => {
+    if(infoLayer.classList.contains('open')) {
+        openInfoModal(null);
+    }
+});
+
+// Clicking ESC closes the info modal
+window.addEventListener('keydown', (e) => {
+    if(e.key == "Escape") {
+        if(infoLayer.classList.contains('open')) {
+            openInfoModal(null);
+        }
+    }
+});

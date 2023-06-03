@@ -169,15 +169,12 @@ header .mouse .scroll{
     border-radius: 1em;
     margin: 0.8em;
     background-color: rgb(72, 71, 71);
+    gap: 0.4em;
 }
 
 .reel .side .punch-hole img {
-    max-width: 100%; /* Adjust the width as needed */
-    max-height: 70%; /* Adjust the height as needed */
-    margin: auto 0 auto 0;
+    height: 1.5em;
     filter: invert(100%) sepia(100%) saturate(17%) hue-rotate(214deg) brightness(105%) contrast(100%);
-    /*https://change-svg-color.vercel.app*/
-
 }
 
 .reel .data{
@@ -477,3 +474,129 @@ header .mouse .scroll{
     background-color: rgb(41, 41, 41);
 }
 
+/* Movie info */
+.info-layer{
+    display: grid;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(13, 13, 13, 0.6);
+    backdrop-filter: blur(10px);
+    transition: opacity 0.4s ease-out;
+    overflow: none;
+    opacity: 1;
+}
+
+.info-layer:not(.open){
+    opacity: 0;
+    pointer-events: none;
+}
+
+.info-box{
+    width: 100%;
+    background-color: black;
+    clip-path: polygon(0 0, 100% 1em, 100% 100%, 0 100%);
+    align-self: flex-end;
+    transition: 0.4s ease-out;
+}
+
+.info-layer:not(.open) .info-box{
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(0, 100%);
+}
+
+.info-box main{
+    max-width: 900px;
+    margin: auto;
+    font-size: 0.9em;
+    padding: 1em;
+    margin-bottom: 1em;
+    display: grid;
+    gap: 1em;
+    line-height: 1.2;
+    position: relative;
+}
+
+.info-box .back{
+    height: 0.4em;
+    transition: 0.2s;
+    filter: invert(1);
+    align-self: center;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.info-box .back:hover{
+    transition: 0.1s;
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+.info-box main>div,
+.info-box .synopsis>div{
+    display: grid;
+    gap: 0.5em;
+}
+
+.info-box .synopsis{
+    display: grid;
+    font-size: 1.2em;
+    align-items: flex-start;
+    gap: 2em;
+    grid-template-columns: auto 350px;
+}
+
+.info-box .synopsis img{
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    clip-path: polygon(5px 2px, 100% 0, calc(100% - 9px) calc(100% - 5px), 0 100%);
+    margin-left: auto;
+}
+
+.info-box h1{
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5em;
+    font-size: 3em;
+    font-family: 'hollywood capital';
+    
+}
+
+.info-box h1 strong{
+    color: var(--accent);
+}
+
+.info-box h1 .time{
+    margin-left: auto;
+    color: var(--accent);
+    font-size: 0.7em;
+}
+
+.info-box ul{
+    margin: 0;
+    gap: 0.4em;
+    display: grid;
+}
+
+.info-box ul li{
+    animation: glideinword 0.3s ease-out backwards;
+}
+
+.info-box h2{
+    font-size: 1.8em;
+    font-family: 'hollywood capital';
+    margin: 0;
+    color: var(--accent);
+}
+
+.info-box h3{
+    font-size: 1.3em;
+    margin: 0;
+    color: white;
+}

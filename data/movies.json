@@ -1,8 +1,9 @@
 {
     "Reservoir Dogs": {
+        "title": "Reservoir Dogs",
         "code": "rd",
         "year": 1992,
-        "synopsys": "After a simple jewelery heist goes terribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
+        "synopsis": "After a simple jewelery heist goes terribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
         "actors": [
             {
                 "name": "Harvey Keitel",
@@ -32,9 +33,10 @@
         "runtime": 99
     },
     "Pulp Fiction": {
+        "title": "Pulp Fiction",
         "code": "pf",
         "year": 1994,
-        "synopsys": "In the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.",
+        "synopsis": "In the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.",
         "actors": [
             {
                 "name": "John Travolta",
@@ -65,9 +67,10 @@
         "runtime": 154
     },
     "Jackie Brown": {
+        "title": "Jackie Brown",
         "code": "jb",
         "year": 1997,
-        "synopsys": "A flight attendant caught smuggling gun money has to choose between teaming up with the cops to bust her arms dealer boss or concealing the information and going to jail.",
+        "synopsis": "A flight attendant caught smuggling gun money has to choose between teaming up with the cops to bust her arms dealer boss or concealing the information and going to jail.",
         "actors": [
             {
                 "name": "Pam Grier",
@@ -97,9 +100,10 @@
         "runtime": 154
     },
     "Kill Bill: Vol. 1": {
+        "title": "Kill Bill: Vol. 1",
         "code": "kb1",
         "year": 2003,
-        "synopsys": "The Bride awakens from a four-year coma. The child she carried in her womb is gone. Now she must wreak vengeance on the team of assassins who betrayed her - a team she was once part of.",
+        "synopsis": "The Bride awakens from a four-year coma. The child she carried in her womb is gone. Now she must wreak vengeance on the team of assassins who betrayed her - a team she was once part of.",
         "actors": [
             {
                 "name": "Uma Thurman",
@@ -130,9 +134,10 @@
         "runtime": 111
     },
     "Kill Bill: Vol. 2": {
+        "title": "Kill Bill: Vol. 2",
         "code": "kb2",
         "year": 2004,
-        "synopsys": "The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd and the treacherous, one-eyed Elle.",
+        "synopsis": "The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd and the treacherous, one-eyed Elle.",
         "actors": [
             {
                 "name": "Uma Thurman",
@@ -160,12 +165,13 @@
             "Tarantino was basically at the end of the writing process when he realized he could still have the daughter alive as a twist.",
             "The second volume made even more money than the first!"
         ],
-        "runtime": 10
+        "runtime": 137
     },
     "Inglorious Basterds": {
+        "title": "Inglorious Basterds",
         "code": "ib",
         "year": 2009,
-        "synopsys":  "A few Jewish soldiers are on an undercover mission to bring down the Nazi government and put an end to the war. Meanwhile, a woman wants to avenge the death of her family from a German officer.",
+        "synopsis":  "A few Jewish soldiers are on an undercover mission to bring down the Nazi government and put an end to the war. Meanwhile, a woman wants to avenge the death of her family from a German officer.",
         "runtime": 153,
         "actors": [
             {
@@ -196,9 +202,10 @@
         ]
     },
     "Django Unchained": {
+        "title": "Django Unchained",
         "code": "du",
         "year": 2012,
-        "synopsys": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+        "synopsis": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
         "runtime": 165,
         "actors": [
             {
