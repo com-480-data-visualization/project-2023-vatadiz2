@@ -69,10 +69,12 @@ h1 .cuss{
 }
 
 header{
-    height: 80vh;
     display: grid;
     font-family: 'Traveling Typwriter';
     min-height: 600px;
+    display: grid;
+    gap: 1em;
+    margin: 3em auto;
 }
 
 header br{
@@ -91,13 +93,53 @@ header p{
     font-size: 1.1em;
 }
 
+header .mouse{
+    width: 30px;
+    filter: invert(100%);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+header .mouse .scroll{
+    animation: scroll 2s infinite;
+    margin: auto;
+}
+
+@keyframes scroll{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-0.5em);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
 /* Reel design */
 .reel-box{
     display: grid;
     max-width: 1100px;
     border-radius: 1em;
-    margin: 5em auto;
-    box-shadow: 2em 2em 3em rgba(0,0,0,0.4);
+    margin: auto;
+    margin-bottom: 10em;
+}
+
+.clapper{
+    font-family: 'Hollywood Capital';
+    font-size: 4em;
+    text-align: center;
+    gap: 3em;
+    display: grid;
+    margin: 3em auto;
+}
+
+.clapper #action{
+    font-size: 1.5em;
+    color: var(--accent);
 }
 
 .reel{
@@ -105,6 +147,7 @@ header p{
     border-radius: 1em;
     box-shadow: 2em 2em 3em rgba(0,0,0,0.4);
     overflow: hidden;
+    margin-top: 18em;
 }
 
 .reel .line{
@@ -191,7 +234,7 @@ header p{
 }
 
 .reel .data .data-dot.appear{
-    animation: dot-appear 0.2s ease-out;
+    animation: dot-appear 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes dot-apprear {
@@ -330,6 +373,7 @@ header p{
     width: 100%;
     margin: auto;
     z-index: 2;
+    margin-top: 1em;
 }
 
 .reel-box nav>div{
@@ -339,18 +383,69 @@ header p{
     text-align: center;
     background-color: rgb(18, 18, 18);
     font-size: 0.5em;
-    transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out, background-color 0.5s ease-out;
     border-radius: 0.5em;
     cursor: pointer;
+    overflow: hidden;
 }
 
-.reel-box nav>div:hover{
+.reel-box nav:not(.ready)>div:hover{
     transform: translateY(-150px);
 }
 
 .reel-box nav h2{
     padding: 0.4em;
     align-self: center;
+}
+
+.reel-box nav .nb{
+    font-size: 3.8em;
+    padding: 0.2em;
+}
+
+.reel-box nav .nb::before{
+    content: 'x';
+    font-size: 0.5em;
+    opacity: 0.9;
+}
+
+.reel-box nav div.small-shake .nb{
+    animation: boing 0.1s ease-out;
+}
+
+.reel-box nav div:not(:hover).big-shake{
+    /* Only when not hovered to avoid animation glitch */
+    animation: shaaake 0.3s ease-out;
+}
+
+@keyframes boing {
+    0%{
+        transform: scale(0.8);
+    }
+    10%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes shaaake {
+    0%{
+        transform: translate(6px, 2px);
+    }
+    25%{
+        transform: translate(-4px, -8px);
+    }
+    50%{
+        transform: translate(3px, 1px);
+    }
+    75%{
+        transform: translate(-3px, 1px);
+    }
+    100%{
+        transform: translate(0, 0);
+    }
 }
 
 .reel-box nav img{
@@ -368,6 +463,17 @@ header p{
     opacity: 1;
 }
 
-.reel-box nav.hide{
-    display: none;
+.reel-box nav.ready img{
+    transition: 0.5s, opacity 0.2s;
+    filter: grayscale(0);
+    opacity: 1;
 }
+
+.reel-box nav.ready>div:hover img{
+    opacity: 0.5;
+}
+
+.reel-box nav.ready>div{
+    background-color: rgb(41, 41, 41);
+}
+

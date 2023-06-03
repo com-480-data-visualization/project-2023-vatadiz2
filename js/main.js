@@ -5,6 +5,8 @@
 //         const div = document.createElement("div");
 //         div.innerHTML = html;
 
+// const { count } = require("d3-array");
+
 //         // Insert the new div element into the parent container
 //         document.body.appendChild(div);
 //     })
@@ -97,22 +99,22 @@ const processData = (data) => {
     // console.log(maxMinutes);
 
     maxNumberOfSwears = Math.max(...processedData.map((movie) => Math.max(...Object.values(movie.minutes).map((minute) => minute.words.length))));
-    // console.log(maxNumberOfSwears);
-    generateLines(processedData);
-    generateGraphMovies(processedData);
-    // console.log(processedData);
-
+    
     // Load movie data for movie popup
     d3.json("data/movies.json", (data) => {
-        generateMoviePopup(data, processedData);
+        let counterRefs = generateMoviePopup(data, processedData);
+
+        generateLines(processedData, counterRefs);
+        generateGraphMovies(processedData);
     });
+    
   };
 
   // Load the CSV file
 d3.csv("data/tarantino.csv", processData);
 
 // Step 1: Define a function to generate the lines based on processedData
-const generateLines = (processedData) => {
+const generateLines = (processedData, counterRefs) => {
     
     // Create the lines based on the maximum number of minutes
     let absLineCount = 0;
@@ -166,7 +168,7 @@ const generateLines = (processedData) => {
                     dataField.appendChild(span);
 
                     // Add modal effect at the current minute
-                    setupModalForDot(span, minutes[i], color);
+                    setupModalForDot(span, minutes[i], movieColors[movieTitle], counterRefs[movieTitle]);
                 }
                 if (minutes[i].deaths > 0) {
                     hasDeath = true;
@@ -216,8 +218,11 @@ const generateLines = (processedData) => {
  * @param {*} dotEl 
  * @param {*} data data with the words for this minute/movie
  */
-function setupModalForDot(dotEl, data, color){
+function setupModalForDot(dotEl, data, color, counterRef){
     const modalHolder = document.getElementById('reelPopup');
+    let wordsNb = data.words.length;
+
+    let oneTime = false; // Avoid scroll event listener to be added multiple times
 
     // Modal creation
     let modal = createModal(data);
@@ -243,8 +248,38 @@ function setupModalForDot(dotEl, data, color){
 
     window.addEventListener('scroll', () => {
         if (dotEl.getBoundingClientRect().top < window.innerHeight - 100) {
+            if(oneTime) return;
             dotEl.classList.add('appear');
             dotEl.classList.remove('hidden');
+            counterRef.innerHTML = parseInt(counterRef.innerHTML) + wordsNb;
+            oneTime = true;
+            
+            // Add shake effect
+            let parentDiv = counterRef.parentElement;
+            parentDiv.classList.add('small-shake');
+            setTimeout(() => {
+                parentDiv.classList.remove('small-shake');
+            }, 100);
+
+            // Add big shake effect
+            if(wordsNb > 8) {
+                // Trick to reset animation
+                parentDiv.style.animation = 'none';
+                parentDiv.offsetHeight; /* trigger reflow */
+                parentDiv.style.animation = null; 
+
+                parentDiv.classList.add('big-shake');
+                setTimeout(() => {
+                    parentDiv.classList.remove('big-shake');
+                }, 300);
+            }
+
+        } else {
+            if(!oneTime) return;
+            dotEl.classList.remove('appear');
+            dotEl.classList.add('hidden');
+            counterRef.innerHTML = parseInt(counterRef.innerHTML) - wordsNb;
+            oneTime = false;
         }
     });
 
@@ -257,6 +292,7 @@ function setupModalForDot(dotEl, data, color){
     function createModal(d) {
         let box = document.createElement('div');
         box.classList.add('popup-reel');
+        // box.style.backgroundColor = color;
 
         // Group words by count
         let wordsByCount = d3.nest()
@@ -460,12 +496,13 @@ svg
  * Generate the bottom popup tab for the movies
  * @param {*} data data on the movies
  * @param {*} wordsData only to get order of movies
+ * @returns the reference to the nb counters for each movie
  * 
  */
 function generateMoviePopup(data, wordsData){
     const reel = document.querySelector('.reel-box'); // The main box container
 
-    console.log(wordsData);
+    let movieCounters = {};
 
     // Create the popup container
     let nav = document.createElement("nav");
@@ -474,7 +511,7 @@ function generateMoviePopup(data, wordsData){
     wordsData.forEach((entry) => {
         let title = entry.movieTitle;
         let mData = data[title];
-        console.log("ag");
+        
         console.log(mData);
         console.log(title);
 
@@ -486,7 +523,15 @@ function generateMoviePopup(data, wordsData){
         let img = document.createElement("img");
         img.src = "img/movies/cover/" + mData.code + ".png";
 
+        let nb = document.createElement("span");
+        nb.innerText = 0;
+        nb.classList.add("nb");
+
+        // Add the nb counter to the movieCounters object
+        movieCounters[title] = nb;
+
         // Append the elements to the movie tab
+        movie.appendChild(nb);
         movie.appendChild(t);
         movie.appendChild(img);
         nav.appendChild(movie);
@@ -497,11 +542,13 @@ function generateMoviePopup(data, wordsData){
 
     // Hide scrollbar if reached the end of reel
     window.addEventListener('scroll', () => {
-        if (window.innerHeight >= reel.getBoundingClientRect().bottom) {
-            nav.classList.add('hide');
+        if (window.innerHeight >= reel.getBoundingClientRect().bottom - 120) {
+            nav.classList.add('ready');
         } else {
-            nav.classList.remove('hide');
+            nav.classList.remove('ready');
         }
     });
+
+    return movieCounters;
 
 }
