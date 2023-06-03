@@ -201,7 +201,7 @@ const generateGraphMovies = (processedData) => {
     const dotRadius = parseFloat(reelStyles.getPropertyValue('--dotRadius'));
     const dotColor = reelStyles.getPropertyValue('--dotColor');
     const maxMinutes = Math.max(...processedData.map((movie) => movie.lastOccurence));
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 }; // Margins around the plot area
+    const margin = { top: 10, right: 20, bottom: 20, left: 40 }; // Margins around the plot area
     const plotWidth = graphWidth - margin.left - margin.right; // Width of the plot area
     const plotHeight = graphHeight - margin.top - margin.bottom; // Height of the plot area
     processedData.forEach((movie) => {
