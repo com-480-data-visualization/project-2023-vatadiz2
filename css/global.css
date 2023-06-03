@@ -73,7 +73,7 @@ header{
     font-family: 'Traveling Typwriter';
     min-height: 600px;
     display: grid;
-    gap: 1em;
+    gap: 3em;
     margin: 3em auto;
 }
 
@@ -430,6 +430,7 @@ header .mouse .scroll{
 @keyframes shaaake {
     0%{
         transform: translate(6px, 2px);
+        background-color: rgb(80, 80, 80);
     }
     25%{
         transform: translate(-4px, -8px);
@@ -442,6 +443,7 @@ header .mouse .scroll{
     }
     100%{
         transform: translate(0, 0);
+        background-color: rgb(18, 18, 18);
     }
 }
 

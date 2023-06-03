@@ -563,7 +563,6 @@ function generateMoviePopup(data, wordsData){
  * @param {*} data data on the movie, or null if closing
  */
 function openInfoModal(data = null){
-    console.log(data);
     let modal = document.querySelector('.info-layer');
     if(data == null) {
         modal.classList.remove('open');
