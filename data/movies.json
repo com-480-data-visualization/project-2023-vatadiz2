@@ -3,43 +3,230 @@
         "code": "rd",
         "year": 1992,
         "synopsys": "After a simple jewelery heist goes terribly wrong, the surviving criminals begin to suspect that one of them is a police informant.",
+        "actors": [
+            {
+                "name": "Harvey Keitel",
+                "role": "Mr. White"
+            },
+            {
+                "name": "Tim Roth",
+                "role": "Mr. Orange"
+            },
+            {
+                "name": "Michael Madsen",
+                "role": "Mr. Blonde"
+            },
+            {
+                "name": "Chris Penn",
+                "role": "Nice Guy Eddie"
+            },
+            {
+                "name": "Steve Buscemi",
+                "role": "Mr. Pink"
+            }
+        ],
+        "funfacts": [
+            "The film was originally going to be called \"Black Mask\", after the pulp magazine. The studio didn't like that, so Quentin Tarantino came up with the title \"Pulp Fiction\" in a couple of days.",
+            "The film was shot in chronological order, so the actors could get a feel for how their characters developed."
+        ],
         "runtime": 99
     },
     "Pulp Fiction": {
         "code": "pf",
         "year": 1994,
-        "synopsys": "Test",
+        "synopsys": "In the realm of underworld, a series of incidents intertwines the lives of two Los Angeles mobsters, a gangster's wife, a boxer and two small-time criminals.",
+        "actors": [
+            {
+                "name": "John Travolta",
+                "role": "Vincent Vega"
+            },
+            {
+                "name": "Samuel L. Jackson",
+                "role": "Jules Winnfield"
+            },
+            {
+                "name": "Uma Thurman",
+                "role": "Mia Wallace"
+            },
+            {
+                "name": "Bruce Willis",
+                "role": "Butch Coolidge"
+            },
+            {
+                "name": "Harvey Keitel",
+                "role": "The Wolf"
+            }
+        ],
+        "funfacts": [
+            "The briefcase's combination is 666, the number of the beast, a reference to the soul of Marsellus Wallace.",
+            "The film was originally going to be called \"Black Mask\", after the pulp magazine. The studio didn't like that, so Quentin Tarantino came up with the title \"Pulp Fiction\" in a couple of days.",
+            "The film was shot in chronological order, so the actors could get a feel for how their characters developed."
+        ],
         "runtime": 154
     },
     "Jackie Brown": {
         "code": "jb",
         "year": 1997,
-        "synopsys": "Test again",
-        "runtime": 10
+        "synopsys": "A flight attendant caught smuggling gun money has to choose between teaming up with the cops to bust her arms dealer boss or concealing the information and going to jail.",
+        "actors": [
+            {
+                "name": "Pam Grier",
+                "role": "Jackie Brown"
+            },
+            {
+                "name": "Samuel L. Jackson",
+                "role": "Ordell Robbie"
+            },
+            {
+                "name": "Robert Forster",
+                "role": "Max Cherry"
+            },
+            {
+                "name": "Bridget Fonda",
+                "role": "Melanie Ralston"
+            },
+            {
+                "name": "Michael Keaton",
+                "role": "Ray Nicolette"
+            }
+        ],
+        "funfacts": [
+            "The film is based on the novel Rum Punch by Elmore Leonard. The novel's title was changed to \"Jackie Brown\" for the film, as Tarantino felt it was a more appropriate title for a blaxploitation film.",
+            "The film was originally intended to be set in Los Angeles, but to save money, the setting was changed to Tarantino's hometown of Torrance, California."
+        ],
+        "runtime": 154
     },
     "Kill Bill: Vol. 1": {
         "code": "kb1",
         "year": 2003,
-        "synopsys": "Test again",
-        "runtime": 10
+        "synopsys": "The Bride awakens from a four-year coma. The child she carried in her womb is gone. Now she must wreak vengeance on the team of assassins who betrayed her - a team she was once part of.",
+        "actors": [
+            {
+                "name": "Uma Thurman",
+                "role": "The Bride"
+            },
+            {
+                "name": "Lucy Liu",
+                "role": "O-Ren Ishii"
+            },
+            {
+                "name": "Vivica A. Fox",
+                "role": "Vernita Green"
+            },
+            {
+                "name": "Daryl Hannah",
+                "role": "Elle Driver"
+            },
+            {
+                "name": "David Carradine",
+                "role": "Bill"
+            }
+        ],
+        "funfacts": [
+            "The Bride's yellow jumpsuit was inspired by Bruce Lee's costume in Game of Death (1978).",
+            "The Bride's name is bleeped out every time it is mentioned, except for once, when Bill says her name in the chapel.",
+            "The Bride's yellow outfit is a tribute to Bruce Lee's yellow tracksuit in Game of Death (1978)."
+        ],
+        "runtime": 111
     },
     "Kill Bill: Vol. 2": {
         "code": "kb2",
         "year": 2004,
-        "synopsys": "Test again",
+        "synopsys": "The Bride continues her quest of vengeance against her former boss and lover Bill, the reclusive bouncer Budd and the treacherous, one-eyed Elle.",
+        "actors": [
+            {
+                "name": "Uma Thurman",
+                "role": "The Bride"
+            },
+            {
+                "name": "David Carradine",
+                "role": "Bill"
+            },
+            {
+                "name": "Michael Madsen",
+                "role": "Budd"
+            },
+            {
+                "name": "Daryl Hannah",
+                "role": "Elle Driver"
+            },
+            {
+                "name": "Gordon Liu",
+                "role": "Pai Mei"
+            }
+        ],
+        "funfacts": [
+            "Kill Bill was originally supposed to be one film",
+            "Tarantino was basically at the end of the writing process when he realized he could still have the daughter alive as a twist.",
+            "The second volume made even more money than the first!"
+        ],
         "runtime": 10
     },
     "Inglorious Basterds": {
         "code": "ib",
         "year": 2009,
-        "synopsys": "Test again",
-        "runtime": 10
+        "synopsys":  "A few Jewish soldiers are on an undercover mission to bring down the Nazi government and put an end to the war. Meanwhile, a woman wants to avenge the death of her family from a German officer.",
+        "runtime": 153,
+        "actors": [
+            {
+                "name": "Brad Pitt",
+                "role": "Lt. Aldo Raine"
+            },
+            {
+                "name": "Christoph Waltz",
+                "role": "Col. Hans Landa"
+            },
+            {
+                "name": "Michael Fassbender",
+                "role": "Lt. Archie Hicox"
+            },
+            {
+                "name": "Eli Roth",
+                "role": "Sgt. Donny Donowitz"
+            },
+            {
+                "name": "Diane Kruger",
+                "role": "Bridget von Hammersmark"
+            }
+        ],
+        "funfacts": [
+            "Only 30% of the Film is Spoken in English",
+            "The movie had its scrip being written for almost a decade, before the making of Kill Bill began.",
+            "The film nearly wasn't made, as Tarantino was so frustrated with the script that he wanted to publish it as a novel instead." 
+        ]
     },
     "Django Unchained": {
         "code": "du",
         "year": 2012,
-        "synopsys": "Test again",
-        "runtime": 10
+        "synopsys": "With the help of a German bounty hunter, a freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+        "runtime": 165,
+        "actors": [
+            {
+                "name": "Jamie Foxx",
+                "role": "Django"
+            },
+            {
+                "name": "Christoph Waltz",
+                "role": "Dr. King Schultz"
+            },
+            {
+                "name": "Leonardo DiCaprio",
+                "role": "Calvin Candie"
+            },
+            {
+                "name": "Kerry Washington",
+                "role": "Broomhilda von Shaft"
+            },
+            {
+                "name": "Samuel L. Jackson",
+                "role": "Stephen"
+            }
+        ],
+        "funfacts": [
+            "The film was shot in chronological order, so the actors could get a feel for how their characters developed.",
+            "The film was originally supposed to be a sequel to Django (1966).",
+            "The film was shot in 130 days."
+        ]
     }
 
 }
