@@ -398,6 +398,7 @@ header .mouse .scroll{
 .reel-box nav .nb{
     font-size: 3.8em;
     padding: 0.2em;
+    transition: font-size 0.2s ease-out;
 }
 
 .reel-box nav .nb::before{
@@ -474,6 +475,11 @@ header .mouse .scroll{
 
 .reel-box nav.ready>div{
     background-color: rgb(41, 41, 41);
+}
+
+.reel-box nav.ready>div .nb{
+    color: white;
+    font-size: 4.2em;
 }
 
 /* Movie info */
