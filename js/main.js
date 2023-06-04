@@ -147,6 +147,8 @@ const generateLines = (processedData, counterRefs) => {
         const lineHeight = line.offsetHeight;
         var hasDeath = false;
         var numberDeaths = 0;
+
+        let deathData = {};
         
         // Check for each movie if there are words at the current minute
         processedData.forEach((movie) => {
@@ -173,6 +175,7 @@ const generateLines = (processedData, counterRefs) => {
                 if (minutes[i].deaths > 0) {
                     hasDeath = true;
                     numberDeaths += minutes[i].deaths;
+                    deathData[movieTitle] = minutes[i].deaths;
                 }
             }
             dataDiv.appendChild(dataField);
@@ -193,6 +196,11 @@ const generateLines = (processedData, counterRefs) => {
             skull.src = 'img/skull.svg';
             endPunchHoleDiv.appendChild(count);
             endPunchHoleDiv.appendChild(skull);
+
+            // To indicate that the area is interactable
+            endPunchHoleDiv.classList.add('interactable');
+            setupModalForDeath(endPunchHoleDiv, deathData);
+
             // const svgPath = 'assets/skull.svg';
             // // Loop through each path element and set the fill and stroke attributes
             // fetch(svgPath)
@@ -341,6 +349,76 @@ function setupModalForDot(dotEl, data, color, counterRef){
     }
 }
 
+function setupModalForDeath(skullEl, data){
+    const modalHolder = document.getElementById('reelPopup');
+
+    // Modal creation
+    let modal = createModal(data);
+
+    // Setup event listeners
+    skullEl.addEventListener('mouseenter', () => {
+        modalHolder.appendChild(modal);
+    });
+
+    skullEl.addEventListener('mouseleave', () => {
+        modalHolder.removeChild(modal);
+    });
+
+    // On move, update the position of the modal
+    skullEl.addEventListener('mousemove', (e) => {
+        // The box should appear on the left of the mouse
+        modal.style.left = e.clientX - 40 - modal.offsetWidth + 'px';
+        // Take into account the scroll position
+        modal.style.top = e.clientY - 15 + window.scrollY + 'px';
+    });
+
+    /**
+     * Create the modal element for this specific skull
+     * @param {*} d 
+     * @returns 
+     */
+    function createModal(d) {
+        let box = document.createElement('div');
+        box.classList.add('popup-reel-death');
+
+        // Create array from object
+        let deaths = [];
+        for (const [title, killCount] of Object.entries(d)) {
+            deaths.push({title, killCount});
+        }
+
+        // Sort by kill count
+        deaths.sort((a, b) => b.killCount - a.killCount);
+
+        let i = 0;
+        // For each key title value death count
+        deaths.forEach((death) => {
+            console.log(death);
+            // Create a list item
+            let el = document.createElement('div');
+            
+            // Death count
+            let nb = document.createElement('span');
+            nb.innerHTML = "<small>x</small>" + death.killCount;
+
+            // Movie names
+            let name = document.createElement('small');
+            name.classList.add('name');
+
+            name.textContent = death.title
+
+            el.appendChild(nb);
+            el.appendChild(name);
+            box.appendChild(el);
+
+            el.style.animationDelay = i * 0.05 + 's';
+
+            i++;
+        });
+        
+        return box;
+    }
+}
 
 
 

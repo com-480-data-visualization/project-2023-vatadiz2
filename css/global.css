@@ -4,6 +4,7 @@
     --text: #e9e7e6;
     --text-soft: #aaa3a1;
     --accent: #ffc609;
+    --warn: #f43920;
 }
 
 @font-face {
@@ -128,20 +129,6 @@ header .mouse .scroll{
     margin-bottom: 10em;
 }
 
-.clapper{
-    font-family: 'Hollywood Capital';
-    font-size: 4em;
-    text-align: center;
-    gap: 3em;
-    display: grid;
-    margin: 3em auto;
-}
-
-.clapper #action{
-    font-size: 1.5em;
-    color: var(--accent);
-}
-
 .reel{
     display: grid;
     border-radius: 1em;
@@ -175,6 +162,15 @@ header .mouse .scroll{
 .reel .side .punch-hole img {
     height: 1.5em;
     filter: invert(100%) sepia(100%) saturate(17%) hue-rotate(214deg) brightness(105%) contrast(100%);
+    transition: 0.1s transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reel .side .punch-hole.interactable{
+    cursor: pointer;
+}
+
+.reel .side .punch-hole:last-child:hover img{
+    transform: scale(1.1);
 }
 
 .reel .data{
@@ -302,18 +298,7 @@ header .mouse .scroll{
     font-family: 'hollywood capital';
     font-size: 1.3em;
     z-index: 3;
-    animation: modalGlide 0.3s ease-out;
-}
-
-@keyframes modalGlide {
-    from {
-        transform: translateX(40px) rotate(5deg);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0px) rotate(0deg);
-        opacity: 1;
-    }
+    animation: modalGlideLeft 0.3s ease-out;
 }
 
 .popup-reel::before{
@@ -333,7 +318,7 @@ header .mouse .scroll{
     display: flex;
     align-items: center;
     gap: 0.5em;
-    animation: glideinword 0.2s ease-out;
+    animation: glideinwordLeft 0.2s ease-out;
     animation-fill-mode: backwards;
 }
 
@@ -345,7 +330,19 @@ header .mouse .scroll{
     font-family: Zen;
 }
 
-@keyframes glideinword {
+
+@keyframes modalGlideLeft {
+    from {
+        transform: translateX(40px) rotate(5deg);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes glideinwordLeft {
     from {
         transform: translateX(50px);
         opacity: 0;
@@ -358,6 +355,73 @@ header .mouse .scroll{
 .popup-reel>div>span>small{
     margin-right: 0.2em;
 }
+
+/* Popup for reel death info */
+.popup-reel-death{
+    position: absolute;
+    max-width: 640px;
+    background-color: var(--warn);
+    padding: 0.4em 0.5em;
+    /* filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.4)); */
+    border-radius: 0.25em;
+    font-family: 'hollywood capital';
+    font-size: 1.3em;
+    z-index: 3;
+    color: var(--text);
+    animation: modalGlideRight 0.3s ease-out;
+}
+
+.popup-reel-death::after{
+    content: '';
+    position: absolute;
+    display: block;
+    top: 10px;
+    right: -30px;
+    width: 40px;
+    height: 10px;
+    background-color:  var(--warn);
+    z-index: -1;
+    border-radius: 20px;
+}
+
+.popup-reel-death .name{
+    margin-left: auto;
+    letter-spacing: -0.05em;
+    font-size: 0.8em;
+    opacity: 0.8;
+    font-family: Zen;
+}
+
+.popup-reel-death>div{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    animation: glideinwordRight 0.2s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes modalGlideRight {
+    from {
+        transform: translateX(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes glideinwordRight {
+    from {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
 
 /* Bottom nav */
 .reel-box nav{
@@ -623,7 +687,7 @@ header .mouse .scroll{
 }
 
 .info-box ul li{
-    animation: glideinword 0.3s ease-out backwards;
+    animation: glideinwordRight 0.3s ease-out backwards;
 }
 
 .info-box h2{
