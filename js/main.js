@@ -20,6 +20,25 @@ var dataset = [];
 var maxNumberOfSwears = 0;
 var maxMinutes = 0;
 
+const swearTypes = new Map();
+const FuckFamily = ['fuck', 'fucked', 'fucking', 'fucks', 'motherfucker', 'motherfuckers', 'fuckface', 'fuckhead', 'fucker', 'fuckup','fuckers','motherfucking']
+const ShitFamily = ['bullshit', 'shit', 'shitty', 'shithead', 'horeshit', 'shitless', 'shitting', 'shitload', 'shittiest', 'horseshit', 'chickenshit']
+const RacialFamily = ['jew', 'jap', 'n-word', 'negro', 'japs', 'gook', 'gooks','wetback', 'slope', 'squaw']
+
+FuckFamily.forEach( k => {
+    swearTypes.set(k, 'FuckFamily');
+});
+
+ShitFamily.forEach( k => {
+    swearTypes.set(k, 'ShitFamily');
+});
+
+RacialFamily.forEach( k => {
+    swearTypes.set(k, 'RacialFamily');
+});
+
+
+
 const movieColors = {
     'Reservoir Dogs': 'rgb(164,157,156)',
     'Pulp Fiction': 'rgb(208,202,203)',
@@ -341,17 +360,18 @@ function setupModalForDot(dotEl, data, color, counterRef){
     }
 }
 
+function getFamily(word) { 
+    const defaultFamily = 'others'; // Default family if word is not found
 
-
-
-
-
-
-
-
-d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv", function(data) {
-    console.log(data.price);
-});
+    // Check if the swearTypes map has an entry for the given word
+    for (const [swearWord, family] of swearTypes.entries()) {
+      if (swearWord === word) {
+        return family; // Return the corresponding family
+      }
+    }
+  
+    return defaultFamily; // Return the default family if word is not found
+  }
 
 const generateGraphMovies = (processedData) => {
     const graphContainer = d3.select('.graphs');
@@ -360,25 +380,25 @@ const generateGraphMovies = (processedData) => {
     const graphWidth = parseFloat(reelStyles.getPropertyValue('--graphWidth'));
     const graphHeight = parseFloat(reelStyles.getPropertyValue('--graphHeight'));
     const padding = parseFloat(reelStyles.getPropertyValue('--padding'));
-    const dotRadius = parseFloat(reelStyles.getPropertyValue('--dotRadius'));
+    const rectangleSize = 5.5;
     const dotColor = reelStyles.getPropertyValue('--dotColor');
     const maxMinutes = Math.max(...processedData.map((movie) => movie.lastOccurence));
-    const margin = { top: 10, right: 20, bottom: 20, left: 40 }; // Margins around the plot area
+    const margin = { top: 60, right: 20, bottom: 20, left: 40 }; // Margins around the plot area
     const plotWidth = graphWidth - margin.left - margin.right; // Width of the plot area
     const plotHeight = graphHeight - margin.top - margin.bottom; // Height of the plot area
     processedData.forEach((movie) => {
         // Create a new SVG element for each graph
         //Create a data object for each movie, being an array containing the number of swears for each minute. If the map doesnt contain a minute, add 0
-        let array = [];
+        let numberWordsPerMinutes = [];
         for (let i = 0; i < maxMinutes; i++) {
             if (movie.minutes[i]) {
-                array.push(movie.minutes[i].words.length);
+                numberWordsPerMinutes.push(movie.minutes[i].words.length);
             } else {
-                array.push(0);
+                numberWordsPerMinutes.push(0);
             }
         }
        
-        console.log(array.length);
+        //console.log(numberWordsPerMinutes);
         const svg = graphContainer
           .append('svg')
           .attr('width', graphWidth) // Set the width of the graph SVG element
@@ -406,90 +426,122 @@ const generateGraphMovies = (processedData) => {
    .domain([0, maxNumberOfSwears])
    .range([plotHeight, 0]);
 
-        const dotRadius = 1; // Radius of the dots
-
         // Generate data for scatter plot
 const scatterData = [];
-array.forEach((value, index) => {
+numberWordsPerMinutes.forEach((value, index) => {
   if (value > 1) {
     for (let i = 1; i <= value; i++) {
-      scatterData.push({ x: index + 1, y: i });
+      scatterData.push({ x: index + 1, y: i, family: getFamily(movie.minutes[index].words[i-1].word), word: movie.minutes[index].words[i-1].word});
     }
   }
 });
 
-svg
-  .selectAll('circle')
-  .data(scatterData)
+//console.log(scatterData);
+//keep only first character or number of each words
+var movieTitle = movie.movieTitle.replace(/[^a-zA-Z0-9]/g, '');
+
+// svg
+//   .selectAll('circle')
+//   .data(scatterData)
+//   .enter()
+//   .append('circle')
+//   .attr('cx', (d) => xScale(d.x))
+//   .attr('cy', (d) => yScale(d.y))
+//   .attr('r', dotRadius)
+//   .style('fill', movieColors[movie.movieTitle])
+//   .on('mouseover', function(d) {
+//     // Change the style or behavior when the mouse is over a circle
+//     d3.select(this).style('fill', 'red');
+//   })
+//   .on('mouseout', function(d) {
+//     // Revert the style or behavior when the mouse leaves a circle
+//     d3.select(this).style('fill', movieColors[movie.movieTitle]);
+//   });
+
+// Create separate groups for each swear family
+const groups = svg
+  .selectAll('g.swear-group')
+  .data(['FuckFamily', 'RacialFamily', 'ShitFamily', 'others']) // Add the names of your swear families here
   .enter()
-  .append('circle')
-  .attr('cx', (d) => xScale(d.x))
-  .attr('cy', (d) => yScale(d.y))
-  .attr('r', dotRadius)
-  .style('fill', 'steelblue');
+  .append('g')
+  .attr('class', d => `swear-group ${d}`);
+
+  // Create the tooltip
+const tip = d3.tip()
+.attr('class', 'd3-tip')
+.offset([-10, 0])
+.html((d) => `<span>${d.word}</span><br><small>(${d.family})</small>`);
+
+
+// Append rectangles to the corresponding group based on the swear family
+groups
+  .selectAll('rect')
+  .data(d => scatterData.filter(item => item.family === d))
+  .enter()
+  .append('rect')
+  .attr('x', (d) => xScale(d.x) - rectangleSize/2)
+  .attr('y', (d) => yScale(d.y))
+  .attr('width', rectangleSize)
+  .attr('height', rectangleSize)
+  .style('fill', movieColors[movie.movieTitle])
+  .style('transition', '0.1s opacity')
+  .on('mouseover', function(d) {
+    // Highlight all circles of the same family
+    const family = d.family;
+    svg.selectAll(`g.swear-group:not(.${family}) rect`).style('opacity', 0.3);
+    // Show the tooltip
+    tip.show(d, this);
+  })
+  .on('mouseout', function() {
+    // Revert the opacity of all circles when the mouse leaves
+    svg.selectAll('rect').style('opacity', 1);
+    // Hide the tooltip
+    tip.hide();
+  })
+  .call(tip);
 
   // Add x-axis
 svg
 .append('g')
-.attr('class', 'x-axis')
+.attr('class', movieTitle)
+.style('stroke', movieColors[movie.movieTitle])
 .attr('transform', `translate(0, ${plotHeight})`)
 .call(d3.axisBottom(xScale));
 
 // Add y-axis
 svg
 .append('g')
-.attr('class', 'y-axis')
-.call(d3.axisLeft(yScale));
+.attr('class', movieTitle)
+.style('stroke', movieColors[movie.movieTitle])
+.call(d3.axisLeft(yScale)
+    .ticks(5)
+    .tickPadding(10)
+    );
 
+// Add CSS styles for the axis lines and paths
+svg
+  .append('style')
+  .text(`
+    .${movieTitle} line {
+      stroke: ${movieColors[movie.movieTitle]};
+    }
+    .${movieTitle} path {
+      stroke: ${movieColors[movie.movieTitle]};
+    }
+  `);
+
+  
 // Add title
 svg
   .append('text')
   .attr('class', 'title')
   .attr('x', plotWidth / 2)
-  .attr('y', margin.top)
+  .attr('y', margin.top / 2)
   .attr('text-anchor', 'middle')
   .style('font-size', '16px')
+  .style('fill', movieColors[movie.movieTitle])
   .text(movie.movieTitle);
-
-
-        // const hist = d3.histogram()
-        // .value((d) => d)
-        // .domain(x.domain())
-        // .thresholds(x.ticks(maxMinutes));
-
-        // const bins = hist(array);
-
-        // console.log(bins);
-
-       
-
-    //   svg.selectAll('.svg')
-    //   .data(movie.minutes, (d) => d.key) // Use the key as the data identifier
-    //   .enter()
-    //   .append('circle')
-    //   .attr('class', 'dot')
-    //   .attr('cx', (d) => xScale(d.key)) // Set the x-coordinate based on the key (minute)
-    //   .attr('cy', (d) => {
-    //     if (d.value) {
-    //       return yScale(d.value.length); // Set the y-coordinate based on the number of occurrences
-    //     } else {
-    //       return yScale(0); // If the minute has no occurrences, set the y-coordinate to the minimum value on the y-axis scale
-    //     }
-    //   })
-    //   .attr('r', dotRadius) // Set the radius of the dots
-    //   .style('fill', dotColor); // Set the color of the dots
-    // svg.selectAll("rect")
-    //   .data(bins)
-    //   .enter()
-    //   .append('rect')
-    //     .attr('x', (d) => x(d.x0)) // Set the x-coordinate of the rectangle
-    //     .attr('y', (d) => yScale(d.length)) // Set the y-coordinate of the rectangle
-    //     .attr('width', (d) => x(d.x1) - x(d.x0) - 1) // Set the width of the rectangle based on bin width
-    //     .attr('height', (d) => graphHeight - yScale(d.length)) // Set the height of the rectangle based on bin frequency
-    //     .style('fill', 'steelblue'); // Set the color of the bars
   });
-
-      console.log(graphContainer);
 };
 
 /**
@@ -512,8 +564,8 @@ function generateMoviePopup(data, wordsData){
         let title = entry.movieTitle;
         let mData = data[title];
         
-        console.log(mData);
-        console.log(title);
+        // console.log(mData);
+        // console.log(title);
 
         // Create the movie tabs
         let movie = document.createElement("div");

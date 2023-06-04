@@ -257,12 +257,12 @@ header .mouse .scroll{
 }
 
 .graphs{
-    max-width: 700px;
+    max-width: 1000px;
     margin: auto;
     display: grid;
     /* Set the graph width and height */
-    --graphWidth: 700px;
-    --graphHeight: 100px;
+    --graphWidth: 1000px;
+    --graphHeight: 200px;
 
     /* Set the padding for the graph */
     --padding: 20px;
@@ -637,4 +637,34 @@ header .mouse .scroll{
     font-size: 1.3em;
     margin: 0;
     color: white;
+}
+
+
+/* Graph info */
+.axisMovie line{
+    stroke: rgb(255, 255, 255);
+}
+  
+.axisMovie path{
+stroke: rgb(255, 255, 255);
+}
+  
+.axisWhite text{
+fill: rgb(255, 255, 255);
+}
+
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    text-align: center;
+    padding: 6px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.d3-tip small {
+    opacity: 0.5;
+    font-size: smaller;
 }
