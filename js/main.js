@@ -1,20 +1,3 @@
-// fetch("data/tarantino.csv")
-//     .then(response => response.text())
-//     .then(html => {
-//         // Create a new div element to contain the HTML code
-//         const div = document.createElement("div");
-//         div.innerHTML = html;
-
-// const { count } = require("d3-array");
-
-//         // Insert the new div element into the parent container
-//         document.body.appendChild(div);
-//     })
-//     .catch(error => console.log(error));
-
-// Import the CSV file into the script
-
-//source for vector : https://www.vecteezy.com/vector-art/93059-skull-bones-silhouette-free-vector
 var dataset = [];
 
 var maxNumberOfSwears = 0;
@@ -36,7 +19,6 @@ ShitFamily.forEach(k => {
 RacialFamily.forEach(k => {
     swearTypes.set(k, 'RacialFamily');
 });
-
 
 
 const movieColors = {
@@ -118,8 +100,6 @@ const processData = (data) => {
     });
     // Find the maximum number of minutes across all movies
     maxMinutes = Math.max(...processedData.map((movie) => movie.lastOccurence));
-    // console.log(maxMinutes);
-
     maxNumberOfSwears = Math.max(...processedData.map((movie) => Math.max(...Object.values(movie.minutes).map((minute) => minute.words.length))));
 
     // Load movie data for movie popup
@@ -135,7 +115,7 @@ const processData = (data) => {
 // Load the CSV file
 d3.csv("data/tarantino.csv", processData);
 
-// Step 1: Define a function to generate the lines based on processedData
+// Define a function to generate the lines based on processedData
 const generateLines = (processedData, counterRefs) => {
 
     // Create the lines based on the maximum number of minutes
@@ -160,7 +140,6 @@ const generateLines = (processedData, counterRefs) => {
         punchHoleDiv.textContent = (i).toString();
         sideClass.appendChild(punchHoleDiv);
         line.appendChild(sideClass);
-        // console.log(line);
 
         const dataDiv = document.createElement('div');
         dataDiv.classList.add('data');
@@ -174,7 +153,6 @@ const generateLines = (processedData, counterRefs) => {
 
         // Check for each movie if there are words at the current minute
         processedData.forEach((movie) => {
-            // console.log(movie);
             const {
                 movieTitle,
                 minutes,
@@ -226,20 +204,9 @@ const generateLines = (processedData, counterRefs) => {
             // To indicate that the area is interactable
             endPunchHoleDiv.classList.add('interactable');
             setupModalForDeath(endPunchHoleDiv, deathData);
-
-            // const svgPath = 'assets/skull.svg';
-            // // Loop through each path element and set the fill and stroke attributes
-            // fetch(svgPath)
-            // .then(response => response.text())
-            // .then(svgData => {
-            //     // Process the SVG data
-            //     endPunchHoleDiv.innerHTML = svgData;
-            // });
-            // endPunchHoleDiv.textContent = "death";
         }
         endSideClass.appendChild(endPunchHoleDiv);
         line.appendChild(endSideClass);
-        //   console.log(line);
         // Append the line to the reel
         document.querySelector('.reel').appendChild(line);
 
@@ -326,7 +293,6 @@ function setupModalForDot(dotEl, data, color, counterRef) {
     function createModal(d) {
         let box = document.createElement('div');
         box.classList.add('popup-reel');
-        // box.style.backgroundColor = color;
 
         // Group words by count
         let wordsByCount = d3.nest()
@@ -561,7 +527,7 @@ const generateGraphMovies = (processedData) => {
                 const family = d.family;
                 //set opacity of all other rects to 0.3
                 svg.selectAll(`rect`).style('opacity', (rect) => (rect.family === family ? 1 : 0.3));
-                //temporarily set the color of the rect to a saturated version of the original
+                //temporarily set the color of the rect to white
                 d3.select(this).style('fill', 'white');
                 // Show the tooltip
                 tip.show(d, this);
@@ -598,28 +564,27 @@ const generateGraphMovies = (processedData) => {
         svg
             .append('style')
             .text(`
-    .${movieTitle} line {
-      stroke: ${movieColors[movie.movieTitle]};
-    }
-    .${movieTitle} path {
-      stroke: ${movieColors[movie.movieTitle]};
-    }
-  `);
+            .${movieTitle} line {
+            stroke: ${movieColors[movie.movieTitle]};
+            }
+            .${movieTitle} path {
+            stroke: ${movieColors[movie.movieTitle]};
+            }
+        `);
 
 
-    // Add title
-    svg
-        .append('text')
-        .attr('class', 'title')
-        .attr('x', plotWidth / 2)
-        .attr('y', margin.top)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '1.6em')
-        .style('font-family', 'hollywood capital')
-        .style('fill', movieColors[movie.movieTitle])
-        .text(movie.movieTitle);
+        // Add title
+        svg
+            .append('text')
+            .attr('class', 'title')
+            .attr('x', plotWidth / 2)
+            .attr('y', margin.top)
+            .attr('text-anchor', 'middle')
+            .style('font-size', '1.6em')
+            .style('font-family', 'hollywood capital')
+            .style('fill', movieColors[movie.movieTitle])
+            .text(movie.movieTitle);
     });
-   
 };
 
 /**
