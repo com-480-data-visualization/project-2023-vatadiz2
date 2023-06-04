@@ -117,8 +117,6 @@ For the third milestone, you can find our website [here](go.epfl.ch/tarantino). 
 The process book can be view here: [Process Book](process_book.pdf)
 
 You can watch the screencast here: [Screencast](screencast.mp4)
-**80% of the final grade**
-
 
 ## Late policy
 
