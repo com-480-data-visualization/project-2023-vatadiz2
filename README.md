@@ -112,6 +112,11 @@ You can find a demo prototype of our visualization here [https://go.epfl.ch/tara
 
 ## Milestone 3 (4th June, 5pm)
 
+For the third milestone, you can find our website [here](go.epfl.ch/tarantino). Please keep in mind that this project has been designed for chromium based browser. The code can be seen on the [site](https://github.com/com-480-data-visualization/project-2023-vatadiz2/site) branch of the repository.
+
+The process book can be view here: [Process Book](process_book.pdf)
+
+You can watch the screencast here: [Screencast](screencast.mp4)
 **80% of the final grade**
 
 
