@@ -253,11 +253,11 @@ header .mouse .scroll{
 }
 
 .graphs{
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
     display: grid;
     /* Set the graph width and height */
-    --graphWidth: 1000px;
+    --graphWidth: 1100px;
     --graphHeight: 200px;
 
     /* Set the padding for the graph */

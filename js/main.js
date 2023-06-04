@@ -21,19 +21,19 @@ var maxNumberOfSwears = 0;
 var maxMinutes = 0;
 
 const swearTypes = new Map();
-const FuckFamily = ['fuck', 'fucked', 'fucking', 'fucks', 'motherfucker', 'motherfuckers', 'fuckface', 'fuckhead', 'fucker', 'fuckup','fuckers','motherfucking']
+const FuckFamily = ['fuck', 'fucked', 'fucking', 'fucks', 'motherfucker', 'motherfuckers', 'fuckface', 'fuckhead', 'fucker', 'fuckup', 'fuckers', 'motherfucking']
 const ShitFamily = ['bullshit', 'shit', 'shitty', 'shithead', 'horeshit', 'shitless', 'shitting', 'shitload', 'shittiest', 'horseshit', 'chickenshit']
-const RacialFamily = ['jew', 'jap', 'n-word', 'negro', 'japs', 'gook', 'gooks','wetback', 'slope', 'squaw']
+const RacialFamily = ['jew', 'jap', 'n-word', 'negro', 'japs', 'gook', 'gooks', 'wetback', 'slope', 'squaw']
 
-FuckFamily.forEach( k => {
+FuckFamily.forEach(k => {
     swearTypes.set(k, 'FuckFamily');
 });
 
-ShitFamily.forEach( k => {
+ShitFamily.forEach(k => {
     swearTypes.set(k, 'ShitFamily');
 });
 
-RacialFamily.forEach( k => {
+RacialFamily.forEach(k => {
     swearTypes.set(k, 'RacialFamily');
 });
 
@@ -47,7 +47,7 @@ const movieColors = {
     'Kill Bill: Vol. 2': 'rgb(205,63,51)',
     'Inglorious Basterds': 'rgb(195,185,156)',
     'Django Unchained': 'rgb(213,178,85)',
-  };
+};
 
 // Load the CSV file into the script
 d3.csv("data/tarantino.csv", (data) => {
@@ -65,60 +65,63 @@ d3.csv("data/tarantino.csv", (data) => {
 // Create a nested array based on movie titles
 const processData = (data) => {
     const nestedData = d3.nest()
-      .key(d => d.movie)
-      .entries(data);
-  
+        .key(d => d.movie)
+        .entries(data);
+
     // Process each movie's data
     const processedData = nestedData.map(movie => {
-      const { key: movieTitle, values } = movie;
-  
-      // Create an object for each minute to store words and deaths
-      const minutes = {};
-      var lastOccurence = 0;
-  
-      values.forEach(d => {
-        // Determine the discrete minutes_in value
-        const minutesIn = Math.ceil(d.minutes_in);
+        const {
+            key: movieTitle,
+            values
+        } = movie;
 
-        // Determine the last occurence of a word or death
-        if (minutesIn > lastOccurence) {
-            lastOccurence = minutesIn;
-        }
-  
-        // Add word or death to the corresponding minute object
-        if (!minutes[minutesIn]) {
-          minutes[minutesIn] = {
-            words: [],
-            deaths: 0
-          };
-        }
-  
-        // Word is stored with the accurate minute as well
-        if (d.type === 'word') {
-            let wData = {
-                word: d.word,
-                timestamp: d.minutes_in
+        // Create an object for each minute to store words and deaths
+        const minutes = {};
+        var lastOccurence = 0;
+
+        values.forEach(d => {
+            // Determine the discrete minutes_in value
+            const minutesIn = Math.ceil(d.minutes_in);
+
+            // Determine the last occurence of a word or death
+            if (minutesIn > lastOccurence) {
+                lastOccurence = minutesIn;
             }
-            minutes[minutesIn].words.push(wData);
-        //   minutes[minutesIn].words.push(d.word);
-        } else if (d.type === 'death') {
-          minutes[minutesIn].deaths++;
-        }
-      });
-  
-      // Return the processed movie data
-      return {
-        movieTitle,
-        lastOccurence,
-        minutes
-      };
+
+            // Add word or death to the corresponding minute object
+            if (!minutes[minutesIn]) {
+                minutes[minutesIn] = {
+                    words: [],
+                    deaths: 0
+                };
+            }
+
+            // Word is stored with the accurate minute as well
+            if (d.type === 'word') {
+                let wData = {
+                    word: d.word,
+                    timestamp: d.minutes_in
+                }
+                minutes[minutesIn].words.push(wData);
+                //   minutes[minutesIn].words.push(d.word);
+            } else if (d.type === 'death') {
+                minutes[minutesIn].deaths++;
+            }
+        });
+
+        // Return the processed movie data
+        return {
+            movieTitle,
+            lastOccurence,
+            minutes
+        };
     });
     // Find the maximum number of minutes across all movies
     maxMinutes = Math.max(...processedData.map((movie) => movie.lastOccurence));
     // console.log(maxMinutes);
 
     maxNumberOfSwears = Math.max(...processedData.map((movie) => Math.max(...Object.values(movie.minutes).map((minute) => minute.words.length))));
-    
+
     // Load movie data for movie popup
     d3.json("data/movies.json", (data) => {
         let counterRefs = generateMoviePopup(data, processedData);
@@ -126,22 +129,22 @@ const processData = (data) => {
         generateLines(processedData, counterRefs);
         generateGraphMovies(processedData);
     });
-    
-  };
 
-  // Load the CSV file
+};
+
+// Load the CSV file
 d3.csv("data/tarantino.csv", processData);
 
 // Step 1: Define a function to generate the lines based on processedData
 const generateLines = (processedData, counterRefs) => {
-    
+
     // Create the lines based on the maximum number of minutes
     let absLineCount = 0;
     for (let i = 1; i <= maxMinutes; i++) {
-        
+
         // Determine the line class for styling
         let lineClass = 'line-middle';
-        if(absLineCount % 5 == 0) {
+        if (absLineCount % 5 == 0) {
             lineClass = 'line-top';
         } else if (absLineCount % 5 == 4) {
             lineClass = 'line-bottom';
@@ -168,20 +171,24 @@ const generateLines = (processedData, counterRefs) => {
         var numberDeaths = 0;
 
         let deathData = {};
-        
+
         // Check for each movie if there are words at the current minute
         processedData.forEach((movie) => {
             // console.log(movie);
-            const { movieTitle, minutes, words } = movie;
+            const {
+                movieTitle,
+                minutes,
+                words
+            } = movie;
             const colorName = `--color-${movieTitle.replace(/\s+/g, '-')}`;
             const computedStyle = getComputedStyle(document.documentElement);
             const color = computedStyle.getPropertyValue(colorName);
             const dataField = document.createElement('div');
             dataField.classList.add('data-field');
 
-            if(minutes[i]) {
+            if (minutes[i]) {
                 if (minutes[i].words.length > 0) {
-                    const span = document.createElement('span');  
+                    const span = document.createElement('span');
                     span.style.backgroundColor = movieColors[movieTitle];
                     span.style.outlineColor = movieColors[movieTitle];
                     span.classList.add('data-dot');
@@ -205,7 +212,7 @@ const generateLines = (processedData, counterRefs) => {
         endSideClass.classList.add('side');
         const endPunchHoleDiv = document.createElement("div");
         endPunchHoleDiv.classList.add("punch-hole");
-        if(hasDeath) {
+        if (hasDeath) {
 
             let skull = document.createElement('img');
             let count = document.createElement('span');
@@ -232,9 +239,9 @@ const generateLines = (processedData, counterRefs) => {
         }
         endSideClass.appendChild(endPunchHoleDiv);
         line.appendChild(endSideClass);
-    //   console.log(line);
-      // Append the line to the reel
-      document.querySelector('.reel').appendChild(line);
+        //   console.log(line);
+        // Append the line to the reel
+        document.querySelector('.reel').appendChild(line);
 
         absLineCount++;
     }
@@ -245,7 +252,7 @@ const generateLines = (processedData, counterRefs) => {
  * @param {*} dotEl 
  * @param {*} data data with the words for this minute/movie
  */
-function setupModalForDot(dotEl, data, color, counterRef){
+function setupModalForDot(dotEl, data, color, counterRef) {
     const modalHolder = document.getElementById('reelPopup');
     let wordsNb = data.words.length;
 
@@ -275,12 +282,12 @@ function setupModalForDot(dotEl, data, color, counterRef){
 
     window.addEventListener('scroll', () => {
         if (dotEl.getBoundingClientRect().top < window.innerHeight - 100) {
-            if(oneTime) return;
+            if (oneTime) return;
             dotEl.classList.add('appear');
             dotEl.classList.remove('hidden');
             counterRef.innerHTML = parseInt(counterRef.innerHTML) + wordsNb;
             oneTime = true;
-            
+
             // Add shake effect
             let parentDiv = counterRef.parentElement;
             parentDiv.classList.add('small-shake');
@@ -289,11 +296,11 @@ function setupModalForDot(dotEl, data, color, counterRef){
             }, 100);
 
             // Add big shake effect
-            if(wordsNb > 8) {
+            if (wordsNb > 8) {
                 // Trick to reset animation
                 parentDiv.style.animation = 'none';
                 parentDiv.offsetHeight; /* trigger reflow */
-                parentDiv.style.animation = null; 
+                parentDiv.style.animation = null;
 
                 parentDiv.classList.add('big-shake');
                 setTimeout(() => {
@@ -302,7 +309,7 @@ function setupModalForDot(dotEl, data, color, counterRef){
             }
 
         } else {
-            if(!oneTime) return;
+            if (!oneTime) return;
             dotEl.classList.remove('appear');
             dotEl.classList.add('hidden');
             counterRef.innerHTML = parseInt(counterRef.innerHTML) - wordsNb;
@@ -335,7 +342,7 @@ function setupModalForDot(dotEl, data, color, counterRef){
         wordsByCount.forEach((word) => {
             // Create a list item
             let el = document.createElement('div');
-            
+
             // Word and count
             let nb = document.createElement('span');
             nb.innerHTML = "<small>x</small>" + word.value + " " + word.key;
@@ -363,24 +370,12 @@ function setupModalForDot(dotEl, data, color, counterRef){
 
             i++;
         });
-        
+
         return box;
     }
 }
 
-function getFamily(word) { 
-    const defaultFamily = 'others';
-     // Check if the swearTypes map has an entry for the given word
-     for (const [swearWord, family] of swearTypes.entries()) {
-        if (swearWord === word) {
-          return family; // Return the corresponding family
-        }
-      }
-    
-      return defaultFamily; // Return the default family if word is not found
-    } // Default family if word is not found
-
-function setupModalForDeath(skullEl, data){
+function setupModalForDeath(skullEl, data) {
     const modalHolder = document.getElementById('reelPopup');
 
     // Modal creation
@@ -415,7 +410,10 @@ function setupModalForDeath(skullEl, data){
         // Create array from object
         let deaths = [];
         for (const [title, killCount] of Object.entries(d)) {
-            deaths.push({title, killCount});
+            deaths.push({
+                title,
+                killCount
+            });
         }
 
         // Sort by kill count
@@ -424,10 +422,9 @@ function setupModalForDeath(skullEl, data){
         let i = 0;
         // For each key title value death count
         deaths.forEach((death) => {
-            console.log(death);
             // Create a list item
             let el = document.createElement('div');
-            
+
             // Death count
             let nb = document.createElement('span');
             nb.innerHTML = "<small>x</small>" + death.killCount;
@@ -446,10 +443,24 @@ function setupModalForDeath(skullEl, data){
 
             i++;
         });
-        
+
         return box;
     }
 }
+
+
+function getFamily(word) {
+    console.log(word);
+    const defaultFamily = 'others';
+    // Check if the swearTypes map has an entry for the given word
+    for (const [swearWord, family] of swearTypes.entries()) {
+        if (swearWord === word) {
+            return family; // Return the corresponding family
+        }
+    }
+
+    return defaultFamily; // Return the default family if word is not found
+} // Default family if word is not found
 
 const generateGraphMovies = (processedData) => {
     const graphContainer = d3.select('.graphs');
@@ -458,10 +469,15 @@ const generateGraphMovies = (processedData) => {
     const graphWidth = parseFloat(reelStyles.getPropertyValue('--graphWidth'));
     const graphHeight = parseFloat(reelStyles.getPropertyValue('--graphHeight'));
     const padding = parseFloat(reelStyles.getPropertyValue('--padding'));
-    const rectangleSize = 5.5;
+    const rectangleSize = 6;
     const dotColor = reelStyles.getPropertyValue('--dotColor');
     const maxMinutes = Math.max(...processedData.map((movie) => movie.lastOccurence));
-    const margin = { top: 60, right: 20, bottom: 20, left: 40 }; // Margins around the plot area
+    const margin = {
+        top: 30,
+        right: 20,
+        bottom: 30,
+        left: 40
+    }; // Margins around the plot area
     const plotWidth = graphWidth - margin.left - margin.right; // Width of the plot area
     const plotHeight = graphHeight - margin.top - margin.bottom; // Height of the plot area
     processedData.forEach((movie) => {
@@ -475,131 +491,113 @@ const generateGraphMovies = (processedData) => {
                 numberWordsPerMinutes.push(0);
             }
         }
-       
-        //console.log(numberWordsPerMinutes);
+
         const svg = graphContainer
-          .append('svg')
-          .attr('width', graphWidth) // Set the width of the graph SVG element
-          .attr('height', graphHeight) // Set the height of the graph SVG element
-          .style('background-color', '#1f1f1f')
-          .append('g')
-        .attr('transform', `translate(${margin.left}, ${margin.top})`); // Apply margins to the plot area
+            .append('svg')
+            .attr('width', graphWidth) // Set the width of the graph SVG element
+            .attr('height', graphHeight) // Set the height of the graph SVG element
+            .style('background-color', '#1f1f1f')
+            .append('g')
+            .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-        // // X axis: scale and draw:
-        // let x = d3.scaleLinear()
-        // .domain([0, maxMinutes])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
-        // .range([0, graphWidth]);
-        // svg.append("g")
-        // .attr("transform", "translate(0," + graphHeight + ")")
-        // .call(d3.axisBottom(x));
+        const xScale = d3
+            .scaleLinear()
+            .domain([0, maxMinutes])
+            .range([0, plotWidth]);
 
-         // console.log(movie.minutes.length);
-         const xScale = d3
-         .scaleLinear()
-         .domain([0, maxMinutes])
-         .range([0, plotWidth]);
-
- const yScale = d3
-   .scaleLinear()
-   .domain([0, maxNumberOfSwears])
-   .range([plotHeight, 0]);
+        const yScale = d3
+            .scaleLinear()
+            .domain([0, maxNumberOfSwears])
+            .range([plotHeight, 0]);
 
         // Generate data for scatter plot
-const scatterData = [];
-numberWordsPerMinutes.forEach((value, index) => {
-  if (value > 1) {
-    for (let i = 1; i <= value; i++) {
-      scatterData.push({ x: index + 1, y: i, family: getFamily(movie.minutes[index].words[i-1].word), word: movie.minutes[index].words[i-1].word});
-    }
-  }
-});
+        const scatterData = [];
+        numberWordsPerMinutes.forEach((value, index) => {
+            if (value > 0) {
+                for (let i = 1; i <= value; i++) {
+                    scatterData.push({
+                        x: index + 1,
+                        y: i,
+                        family: getFamily(movie.minutes[index].words[i - 1].word),
+                        word: movie.minutes[index].words[i - 1].word
+                    });
+                }
+            }
+        });
 
-//console.log(scatterData);
-//keep only first character or number of each words
-var movieTitle = movie.movieTitle.replace(/[^a-zA-Z0-9]/g, '');
+        //keep only first character or number of each words
+        var movieTitle = movie.movieTitle.replace(/[^a-zA-Z0-9]/g, '');
 
-// svg
-//   .selectAll('circle')
-//   .data(scatterData)
-//   .enter()
-//   .append('circle')
-//   .attr('cx', (d) => xScale(d.x))
-//   .attr('cy', (d) => yScale(d.y))
-//   .attr('r', dotRadius)
-//   .style('fill', movieColors[movie.movieTitle])
-//   .on('mouseover', function(d) {
-//     // Change the style or behavior when the mouse is over a circle
-//     d3.select(this).style('fill', 'red');
-//   })
-//   .on('mouseout', function(d) {
-//     // Revert the style or behavior when the mouse leaves a circle
-//     d3.select(this).style('fill', movieColors[movie.movieTitle]);
-//   });
+        // Create separate groups for each swear family
+        const groups = svg
+            .selectAll('g.swear-group')
+            .data(['FuckFamily', 'RacialFamily', 'ShitFamily', 'others']) // Add the names of your swear families here
+            .enter()
+            .append('g')
+            .attr('class', d => `swear-group ${d}`);
 
-// Create separate groups for each swear family
-const groups = svg
-  .selectAll('g.swear-group')
-  .data(['FuckFamily', 'RacialFamily', 'ShitFamily', 'others']) // Add the names of your swear families here
-  .enter()
-  .append('g')
-  .attr('class', d => `swear-group ${d}`);
+        // Create the tooltip
+        const tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html((d) => `<span>${d.word}</span><br><small>(${d.family})</small>`);
 
-  // Create the tooltip
-const tip = d3.tip()
-.attr('class', 'd3-tip')
-.offset([-10, 0])
-.html((d) => `<span>${d.word}</span><br><small>(${d.family})</small>`);
+        // Append rectangles to the corresponding group based on the swear family
+        groups
+            .selectAll('rect')
+            .data(d => scatterData.filter(item => item.family === d))
+            .enter()
+            .append('rect')
+            .attr('x', (d) => xScale(d.x) - rectangleSize / 2)
+            .attr('y', (d) => yScale(d.y))
+            .attr('width', rectangleSize)
+            .attr('height', rectangleSize + 0.5)
+            .style('fill', movieColors[movie.movieTitle])
+            .style('cursor', 'pointer')
+            .style('stroke', 'rgb(31, 31, 31)') // Add border color
+            .style('stroke-width', '1px') // Add border width
+            .on('mouseover', function (d) {
+                // Highlight all circles of the same family
+                const family = d.family;
+                //set opacity of all other rects to 0.3
+                svg.selectAll(`rect`).style('opacity', (rect) => (rect.family === family ? 1 : 0.3));
+                //temporarily set the color of the rect to a saturated version of the original
+                d3.select(this).style('fill', 'white');
+                // Show the tooltip
+                tip.show(d, this);
+            })
+            .on('mouseout', function () {
+                // Revert the opacity of all circles when the mouse leaves
+                svg.selectAll('rect').style('opacity', 1);
+                //set the color of the rect back to the original
+                d3.select(this).style('fill', movieColors[movie.movieTitle]);
+                // Hide the tooltip
+                tip.hide();
+            })
+            .call(tip);
 
+        // Add x-axis
+        svg
+            .append('g')
+            .attr('class', movieTitle)
+            .style('stroke', movieColors[movie.movieTitle])
+            .attr('transform', `translate(0, ${plotHeight})`)
+            .call(d3.axisBottom(xScale));
 
-// Append rectangles to the corresponding group based on the swear family
-groups
-  .selectAll('rect')
-  .data(d => scatterData.filter(item => item.family === d))
-  .enter()
-  .append('rect')
-  .attr('x', (d) => xScale(d.x) - rectangleSize/2)
-  .attr('y', (d) => yScale(d.y))
-  .attr('width', rectangleSize)
-  .attr('height', rectangleSize)
-  .style('fill', movieColors[movie.movieTitle])
-  .style('transition', '0.1s opacity')
-  .on('mouseover', function(d) {
-    // Highlight all circles of the same family
-    const family = d.family;
-    svg.selectAll(`g.swear-group:not(.${family}) rect`).style('opacity', 0.3);
-    // Show the tooltip
-    tip.show(d, this);
-  })
-  .on('mouseout', function() {
-    // Revert the opacity of all circles when the mouse leaves
-    svg.selectAll('rect').style('opacity', 1);
-    // Hide the tooltip
-    tip.hide();
-  })
-  .call(tip);
+        // Add y-axis
+        svg
+            .append('g')
+            .attr('class', movieTitle)
+            .style('stroke', movieColors[movie.movieTitle])
+            .call(d3.axisLeft(yScale)
+                .ticks(5)
+                .tickPadding(10)
+            );
 
-  // Add x-axis
-svg
-.append('g')
-.attr('class', movieTitle)
-.style('stroke', movieColors[movie.movieTitle])
-.attr('transform', `translate(0, ${plotHeight})`)
-.call(d3.axisBottom(xScale));
-
-// Add y-axis
-svg
-.append('g')
-.attr('class', movieTitle)
-.style('stroke', movieColors[movie.movieTitle])
-.call(d3.axisLeft(yScale)
-    .ticks(5)
-    .tickPadding(10)
-    );
-
-// Add CSS styles for the axis lines and paths
-svg
-  .append('style')
-  .text(`
+        // Add CSS styles for the axis lines and paths
+        svg
+            .append('style')
+            .text(`
     .${movieTitle} line {
       stroke: ${movieColors[movie.movieTitle]};
     }
@@ -608,18 +606,20 @@ svg
     }
   `);
 
-  
-// Add title
-svg
-  .append('text')
-  .attr('class', 'title')
-  .attr('x', plotWidth / 2)
-  .attr('y', margin.top / 2)
-  .attr('text-anchor', 'middle')
-  .style('font-size', '16px')
-  .style('fill', movieColors[movie.movieTitle])
-  .text(movie.movieTitle);
-  });
+
+    // Add title
+    svg
+        .append('text')
+        .attr('class', 'title')
+        .attr('x', plotWidth / 2)
+        .attr('y', margin.top)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '1.6em')
+        .style('font-family', 'hollywood capital')
+        .style('fill', movieColors[movie.movieTitle])
+        .text(movie.movieTitle);
+    });
+   
 };
 
 /**
@@ -629,7 +629,7 @@ svg
  * @returns the reference to the nb counters for each movie
  * 
  */
-function generateMoviePopup(data, wordsData){
+function generateMoviePopup(data, wordsData) {
     const reel = document.querySelector('.reel-box'); // The main box container
 
     let movieCounters = {};
@@ -641,9 +641,6 @@ function generateMoviePopup(data, wordsData){
     wordsData.forEach((entry) => {
         let title = entry.movieTitle;
         let mData = data[title];
-        
-        // console.log(mData);
-        // console.log(title);
 
         // Create the movie tabs
         let movie = document.createElement("div");
@@ -692,9 +689,9 @@ function generateMoviePopup(data, wordsData){
  * Opens or closes the info modal with the movie's data
  * @param {*} data data on the movie, or null if closing
  */
-function openInfoModal(data = null){
+function openInfoModal(data = null) {
     let modal = document.querySelector('.info-layer');
-    if(data == null) {
+    if (data == null) {
         modal.classList.remove('open');
         return;
     }
@@ -770,22 +767,22 @@ function openInfoModal(data = null){
 // Clicking outside the info modal closes it
 let infoLayer = document.querySelector('.info-layer');
 infoLayer.addEventListener('click', (e) => {
-    if(e.target.classList.contains('info-layer')) {
+    if (e.target.classList.contains('info-layer')) {
         openInfoModal(null);
     }
 });
 
 // Scrolling closes the info modal
 window.addEventListener('scroll', (e) => {
-    if(infoLayer.classList.contains('open')) {
+    if (infoLayer.classList.contains('open')) {
         openInfoModal(null);
     }
 });
 
 // Clicking ESC closes the info modal
 window.addEventListener('keydown', (e) => {
-    if(e.key == "Escape") {
-        if(infoLayer.classList.contains('open')) {
+    if (e.key == "Escape") {
+        if (infoLayer.classList.contains('open')) {
             openInfoModal(null);
         }
     }

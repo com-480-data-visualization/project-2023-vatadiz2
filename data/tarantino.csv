@@ -159,8 +159,8 @@ Reservoir Dogs,word,assholes,35.48
 Reservoir Dogs,word,fuck,35.50
 Reservoir Dogs,word,fucking,35.60
 Reservoir Dogs,word,fucking,35.61
-Reservoir Dogs,word,n-word ,35.61
-Reservoir Dogs,word,n-word ,35.63
+Reservoir Dogs,word,n-word,35.61
+Reservoir Dogs,word,n-word,35.63
 Reservoir Dogs,word,fucking,35.71
 Reservoir Dogs,word,fucking,35.83
 Reservoir Dogs,word,fuck,35.88
@@ -190,7 +190,7 @@ Reservoir Dogs,word,fucking,41.75
 Reservoir Dogs,word,ass,41.76
 Reservoir Dogs,word,bitch,41.85
 Reservoir Dogs,word,fucking,41.93
-Reservoir Dogs,word,n-word ,41.93
+Reservoir Dogs,word,n-word,41.93
 Reservoir Dogs,word,ass,42.00
 Reservoir Dogs,word,fucking,42.03
 Reservoir Dogs,word,bitch,42.11
@@ -345,9 +345,9 @@ Reservoir Dogs,word,fucking,76.30
 Reservoir Dogs,word,bitch,77.05
 Reservoir Dogs,word,bitch,77.06
 Reservoir Dogs,word,fuck,77.13
-Reservoir Dogs,word,n-word ,77.25
+Reservoir Dogs,word,n-word,77.25
 Reservoir Dogs,word,shit,77.28
-Reservoir Dogs,word,n-word ,77.33
+Reservoir Dogs,word,n-word,77.33
 Reservoir Dogs,word,ass,77.35
 Reservoir Dogs,word,bitches,77.36
 Reservoir Dogs,word,fuck,77.40
@@ -458,12 +458,12 @@ Pulp Fiction,word,goddamn,8.67
 Pulp Fiction,word,fucking,8.72
 Pulp Fiction,word,shit,8.72
 Pulp Fiction,word,fucking,9.10
-Pulp Fiction,word,n-word ,10.08
+Pulp Fiction,word,n-word,10.08
 Pulp Fiction,word,fucked,10.17
 Pulp Fiction,word,fuck,10.40
 Pulp Fiction,word,ass,10.73
-Pulp Fiction,word,n-word ,10.75
-Pulp Fiction,word,n-word ,10.85
+Pulp Fiction,word,n-word,10.75
+Pulp Fiction,word,n-word,10.85
 Pulp Fiction,word,damn,10.98
 Pulp Fiction,word,pussy,11.52
 Pulp Fiction,word,fucking,11.55
@@ -480,7 +480,7 @@ Pulp Fiction,word,fuck,12.20
 Pulp Fiction,word,fuck,12.27
 Pulp Fiction,word,motherfucking,12.88
 Pulp Fiction,word,fucking,12.90
-Pulp Fiction,word,n-word ,12.92
+Pulp Fiction,word,n-word,12.92
 Pulp Fiction,word,shit,12.93
 Pulp Fiction,word,motherfucker,12.95
 Pulp Fiction,word,shit,12.97
@@ -515,7 +515,7 @@ Pulp Fiction,word,ass,21.88
 Pulp Fiction,word,motherfuckers,22.03
 Pulp Fiction,word,motherfuckers,22.08
 Pulp Fiction,word,ass,22.10
-Pulp Fiction,word,n-word ,23.07
+Pulp Fiction,word,n-word,23.07
 Pulp Fiction,word,fucking,23.47
 Pulp Fiction,word,fuck,23.52
 Pulp Fiction,word,shit,23.70
@@ -523,7 +523,7 @@ Pulp Fiction,word,ass,24.07
 Pulp Fiction,word,ass,24.23
 Pulp Fiction,word,asses,24.40
 Pulp Fiction,word,goddamn,24.45
-Pulp Fiction,word,n-word ,24.45
+Pulp Fiction,word,n-word,24.45
 Pulp Fiction,word,fucking,25.08
 Pulp Fiction,word,goddamn,25.12
 Pulp Fiction,word,fucking,25.17
@@ -531,11 +531,11 @@ Pulp Fiction,word,fucking,25.28
 Pulp Fiction,word,shit,25.33
 Pulp Fiction,word,fucking,25.37
 Pulp Fiction,word,asshole,25.42
-Pulp Fiction,word,n-word ,25.88
+Pulp Fiction,word,n-word,25.88
 Pulp Fiction,word,ass,25.92
 Pulp Fiction,word,shit,27.75
 Pulp Fiction,word,fucking,27.78
-Pulp Fiction,word,n-word ,27.88
+Pulp Fiction,word,n-word,27.88
 Pulp Fiction,word,shit,27.98
 Pulp Fiction,word,shit,27.98
 Pulp Fiction,word,shit,28.03
@@ -632,7 +632,7 @@ Pulp Fiction,word,ass,70.30
 Pulp Fiction,word,ass,70.38
 Pulp Fiction,word,goddamn,70.40
 Pulp Fiction,word,motherfucker,70.50
-Pulp Fiction,word,n-word ,70.55
+Pulp Fiction,word,n-word,70.55
 Pulp Fiction,word,ass,70.60
 Pulp Fiction,word,shit,72.98
 Pulp Fiction,word,fuck,73.78
@@ -671,8 +671,8 @@ Pulp Fiction,word,fucking,96.32
 Pulp Fiction,word,shit,96.33
 Pulp Fiction,word,motherfucking,96.45
 Pulp Fiction,word,goddamn,96.50
-Pulp Fiction,word,n-word ,96.78
-Pulp Fiction,word,n-word ,100.53
+Pulp Fiction,word,n-word,96.78
+Pulp Fiction,word,n-word,100.53
 Pulp Fiction,word,goddamn,102.35
 Pulp Fiction,word,goddamn,102.38
 Pulp Fiction,word,fucker,102.63
@@ -684,7 +684,7 @@ Pulp Fiction,word,fuck,104.95
 Pulp Fiction,death,,105.45
 Pulp Fiction,word,fuck,106.40
 Pulp Fiction,word,fucking,106.62
-Pulp Fiction,word,n-word ,107.08
+Pulp Fiction,word,n-word,107.08
 Pulp Fiction,word,damn,107.33
 Pulp Fiction,word,ass,107.37
 Pulp Fiction,word,ass,108.22
@@ -717,7 +717,7 @@ Pulp Fiction,word,shit,114.60
 Pulp Fiction,word,shit,114.63
 Pulp Fiction,word,fucking,114.75
 Pulp Fiction,word,fucking,114.85
-Pulp Fiction,word,n-word ,115.08
+Pulp Fiction,word,n-word,115.08
 Pulp Fiction,word,shit,115.12
 Pulp Fiction,word,fucking,115.53
 Pulp Fiction,word,fuck,115.55
@@ -751,7 +751,7 @@ Pulp Fiction,word,shit,117.53
 Pulp Fiction,word,shit,117.60
 Pulp Fiction,word,ass,117.63
 Pulp Fiction,word,fuck,117.65
-Pulp Fiction,word,n-word ,117.65
+Pulp Fiction,word,n-word,117.65
 Pulp Fiction,word,fuck,117.67
 Pulp Fiction,word,shit,117.78
 Pulp Fiction,word,fucking,117.87
@@ -762,11 +762,11 @@ Pulp Fiction,word,shit,118.45
 Pulp Fiction,word,shit,118.58
 Pulp Fiction,word,fucking,118.68
 Pulp Fiction,word,shit,118.77
-Pulp Fiction,word,n-word ,118.92
-Pulp Fiction,word,n-word ,119.07
+Pulp Fiction,word,n-word,118.92
+Pulp Fiction,word,n-word,119.07
 Pulp Fiction,word,shit,119.12
-Pulp Fiction,word,n-word ,119.17
-Pulp Fiction,word,n-word ,119.30
+Pulp Fiction,word,n-word,119.17
+Pulp Fiction,word,n-word,119.30
 Pulp Fiction,word,fucking,119.32
 Pulp Fiction,word,motherfucker,119.37
 Pulp Fiction,word,fucking,119.40
@@ -789,9 +789,9 @@ Pulp Fiction,word,shit,120.83
 Pulp Fiction,word,motherfucking,121.03
 Pulp Fiction,word,ass,121.07
 Pulp Fiction,word,motherfucker,121.12
-Pulp Fiction,word,n-word ,121.13
+Pulp Fiction,word,n-word,121.13
 Pulp Fiction,word,motherfucker,121.27
-Pulp Fiction,word,n-word ,121.32
+Pulp Fiction,word,n-word,121.32
 Pulp Fiction,word,motherfucker,121.45
 Pulp Fiction,word,shit,121.47
 Pulp Fiction,word,motherfucker,123.85
@@ -814,7 +814,7 @@ Pulp Fiction,word,motherfucker,128.53
 Pulp Fiction,word,fuck,128.67
 Pulp Fiction,word,motherfucker,128.68
 Pulp Fiction,word,fucking,128.73
-Pulp Fiction,word,n-word ,128.78
+Pulp Fiction,word,n-word,128.78
 Pulp Fiction,word,dicks,129.12
 Pulp Fiction,word,shit,129.52
 Pulp Fiction,word,ass,129.33
@@ -1136,18 +1136,18 @@ Inglorious Basterds,death,,35.17
 Inglorious Basterds,word,damn,35.20
 Inglorious Basterds,word,fuck,35.30
 Inglorious Basterds,word,ass,48.17
-Inglorious Basterds,word,negro ,48.68
+Inglorious Basterds,word,negro,48.68
 Inglorious Basterds,word,shit,51.48
 Inglorious Basterds,word,hell,52.55
-Inglorious Basterds,word,negro ,58.43
-Inglorious Basterds,word,negro ,59.38
-Inglorious Basterds,word,negro ,59.57
+Inglorious Basterds,word,negro,58.43
+Inglorious Basterds,word,negro,59.38
+Inglorious Basterds,word,negro,59.57
 Inglorious Basterds,word,fuck,61.83
 Inglorious Basterds,word,goddamn,69.48
 Inglorious Basterds,word,fucking,69.50
 Inglorious Basterds,word,squaw,73.00
 Inglorious Basterds,word,ass,75.83
-Inglorious Basterds,word,negro ,86.97
+Inglorious Basterds,word,negro,86.97
 Inglorious Basterds,word,slut,90.53
 Inglorious Basterds,word,hell,92.03
 Inglorious Basterds,word,damn,92.27
@@ -1219,28 +1219,28 @@ Django Unchained,word,bitch,8.38
 Django Unchained,word,damn,8.65
 Django Unchained,word,fucking,8.87
 Django Unchained,word,damn,8.88
-Django Unchained,word,n-word ,9.80
+Django Unchained,word,n-word,9.80
 Django Unchained,word,goddamn,10.07
 Django Unchained,word,hell,10.53
 Django Unchained,death,,12.63
-Django Unchained,word,n-word ,13.57
-Django Unchained,word,n-word ,14.07
+Django Unchained,word,n-word,13.57
+Django Unchained,word,n-word,14.07
 Django Unchained,word,hell,14.75
-Django Unchained,word,n-word ,14.78
+Django Unchained,word,n-word,14.78
 Django Unchained,word,ass,19.37
 Django Unchained,death,,19.62
 Django Unchained,word,goddamn,20.25
-Django Unchained,word,n-word ,20.47
+Django Unchained,word,n-word,20.47
 Django Unchained,word,hell,22.67
-Django Unchained,word,n-word ,24.98
-Django Unchained,word,n-word ,28.55
-Django Unchained,word,n-word ,28.65
-Django Unchained,word,n-word ,28.80
-Django Unchained,word,n-word ,29.38
-Django Unchained,word,n-word ,29.50
-Django Unchained,word,n-word ,29.65
-Django Unchained,word,n-word ,31.07
-Django Unchained,word,n-word ,31.10
+Django Unchained,word,n-word,24.98
+Django Unchained,word,n-word,28.55
+Django Unchained,word,n-word,28.65
+Django Unchained,word,n-word,28.80
+Django Unchained,word,n-word,29.38
+Django Unchained,word,n-word,29.50
+Django Unchained,word,n-word,29.65
+Django Unchained,word,n-word,31.07
+Django Unchained,word,n-word,31.10
 Django Unchained,word,damn,33.12
 Django Unchained,death,,36.47
 Django Unchained,word,goddamn,36.55
@@ -1248,8 +1248,8 @@ Django Unchained,word,bitch,36.57
 Django Unchained,death,,37.45
 Django Unchained,death,,38.03
 Django Unchained,word,bitches,40.92
-Django Unchained,word,n-word ,41.68
-Django Unchained,word,n-word ,42.02
+Django Unchained,word,n-word,41.68
+Django Unchained,word,n-word,42.02
 Django Unchained,word,fucking,42.23
 Django Unchained,word,shit,42.23
 Django Unchained,word,fucking,42.33
@@ -1263,13 +1263,13 @@ Django Unchained,word,fucking,43.25
 Django Unchained,word,fucking,43.27
 Django Unchained,word,fuck,43.28
 Django Unchained,word,bitches,43.42
-Django Unchained,word,n-word ,43.65
+Django Unchained,word,n-word,43.65
 Django Unchained,word,goddamn,44.30
 Django Unchained,word,fucking,44.42
 Django Unchained,word,shit,44.55
-Django Unchained,word,n-word ,44.58
-Django Unchained,word,n-word ,44.63
-Django Unchained,word,n-word ,44.67
+Django Unchained,word,n-word,44.58
+Django Unchained,word,n-word,44.63
+Django Unchained,word,n-word,44.67
 Django Unchained,word,shit,45.50
 Django Unchained,death,,45.78
 Django Unchained,word,hell,47.65
@@ -1280,118 +1280,118 @@ Django Unchained,death,,56.58
 Django Unchained,death,,56.62
 Django Unchained,death,,56.63
 Django Unchained,death,,56.65
-Django Unchained,word,n-word ,59.42
+Django Unchained,word,n-word,59.42
 Django Unchained,word,goddamned,59.65
-Django Unchained,word,n-word ,59.75
+Django Unchained,word,n-word,59.75
 Django Unchained,word,fuck,60.50
 Django Unchained,word,fucking,62.22
-Django Unchained,word,n-word ,63.20
-Django Unchained,word,n-word ,64.78
+Django Unchained,word,n-word,63.20
+Django Unchained,word,n-word,64.78
 Django Unchained,death,,66.90
-Django Unchained,word,n-word ,70.10
-Django Unchained,word,n-word ,71.17
-Django Unchained,word,n-word ,71.20
-Django Unchained,word,n-word ,71.23
-Django Unchained,word,n-word ,71.28
-Django Unchained,word,n-word ,71.35
-Django Unchained,word,n-word ,71.87
-Django Unchained,word,n-word ,73.17
-Django Unchained,word,n-word ,73.23
-Django Unchained,word,n-word ,73.32
-Django Unchained,word,n-word ,73.73
-Django Unchained,word,n-word ,74.00
-Django Unchained,word,n-word ,74.40
+Django Unchained,word,n-word,70.10
+Django Unchained,word,n-word,71.17
+Django Unchained,word,n-word,71.20
+Django Unchained,word,n-word,71.23
+Django Unchained,word,n-word,71.28
+Django Unchained,word,n-word,71.35
+Django Unchained,word,n-word,71.87
+Django Unchained,word,n-word,73.17
+Django Unchained,word,n-word,73.23
+Django Unchained,word,n-word,73.32
+Django Unchained,word,n-word,73.73
+Django Unchained,word,n-word,74.00
+Django Unchained,word,n-word,74.40
 Django Unchained,word,goddamn,74.77
-Django Unchained,word,n-word ,74.83
+Django Unchained,word,n-word,74.83
 Django Unchained,word,hell,75.67
 Django Unchained,word,goddamn,76.20
-Django Unchained,word,n-word ,76.30
-Django Unchained,word,n-word ,76.37
+Django Unchained,word,n-word,76.30
+Django Unchained,word,n-word,76.37
 Django Unchained,word,ass,76.45
 Django Unchained,word,goddamn,76.45
 Django Unchained,word,hell,76.92
-Django Unchained,word,n-word ,78.48
+Django Unchained,word,n-word,78.48
 Django Unchained,word,ass,79.57
 Django Unchained,word,goddamn,79.63
 Django Unchained,word,goddamn,79.77
-Django Unchained,word,n-word ,79.80
-Django Unchained,word,n-word ,81.32
+Django Unchained,word,n-word,79.80
+Django Unchained,word,n-word,81.32
 Django Unchained,word,goddamn,81.68
-Django Unchained,word,n-word ,82.98
-Django Unchained,word,n-word ,83.47
-Django Unchained,word,n-word ,83.52
-Django Unchained,word,n-word ,83.68
+Django Unchained,word,n-word,82.98
+Django Unchained,word,n-word,83.47
+Django Unchained,word,n-word,83.52
+Django Unchained,word,n-word,83.68
 Django Unchained,death,,84.38
-Django Unchained,word,n-word ,84.47
+Django Unchained,word,n-word,84.47
 Django Unchained,word,ass,88.32
-Django Unchained,word,n-word ,88.35
-Django Unchained,word,n-word ,88.75
+Django Unchained,word,n-word,88.35
+Django Unchained,word,n-word,88.75
 Django Unchained,word,ass,88.97
-Django Unchained,word,n-word ,89.13
-Django Unchained,word,n-word ,89.13
-Django Unchained,word,n-word ,89.35
+Django Unchained,word,n-word,89.13
+Django Unchained,word,n-word,89.13
+Django Unchained,word,n-word,89.35
 Django Unchained,word,bastard,89.52
-Django Unchained,word,n-word ,89.62
+Django Unchained,word,n-word,89.62
 Django Unchained,word,ass,90.03
 Django Unchained,word,motherfucker,90.03
 Django Unchained,word,goddamn,90.17
-Django Unchained,word,n-word ,90.32
+Django Unchained,word,n-word,90.32
 Django Unchained,word,goddamn,90.37
-Django Unchained,word,n-word ,90.42
+Django Unchained,word,n-word,90.42
 Django Unchained,word,shit,90.43
 Django Unchained,word,ass,90.88
-Django Unchained,word,n-word ,91.00
-Django Unchained,word,n-word ,91.02
-Django Unchained,word,n-word ,91.17
-Django Unchained,word,n-word ,91.18
+Django Unchained,word,n-word,91.00
+Django Unchained,word,n-word,91.02
+Django Unchained,word,n-word,91.17
+Django Unchained,word,n-word,91.18
 Django Unchained,word,ass,92.12
 Django Unchained,word,damn,92.23
 Django Unchained,word,damn,92.25
 Django Unchained,word,shit,92.27
 Django Unchained,word,damn,92.33
 Django Unchained,word,bitch,92.37
-Django Unchained,word,n-word ,92.53
-Django Unchained,word,n-word ,92.67
+Django Unchained,word,n-word,92.53
+Django Unchained,word,n-word,92.67
 Django Unchained,word,ass,92.78
 Django Unchained,word,ass,93.22
-Django Unchained,word,n-word ,96.73
+Django Unchained,word,n-word,96.73
 Django Unchained,word,ass,101.02
-Django Unchained,word,n-word ,101.48
-Django Unchained,word,n-word ,101.97
-Django Unchained,word,n-word ,102.07
-Django Unchained,word,n-word ,102.32
-Django Unchained,word,n-word ,102.60
-Django Unchained,word,n-word ,102.78
-Django Unchained,word,n-word ,102.83
-Django Unchained,word,n-word ,103.02
-Django Unchained,word,n-word ,103.15
-Django Unchained,word,n-word ,103.20
+Django Unchained,word,n-word,101.48
+Django Unchained,word,n-word,101.97
+Django Unchained,word,n-word,102.07
+Django Unchained,word,n-word,102.32
+Django Unchained,word,n-word,102.60
+Django Unchained,word,n-word,102.78
+Django Unchained,word,n-word,102.83
+Django Unchained,word,n-word,103.02
+Django Unchained,word,n-word,103.15
+Django Unchained,word,n-word,103.20
 Django Unchained,word,hell,103.83
-Django Unchained,word,n-word ,104.23
-Django Unchained,word,n-word ,104.27
+Django Unchained,word,n-word,104.23
+Django Unchained,word,n-word,104.27
 Django Unchained,word,ass,104.35
-Django Unchained,word,n-word ,104.90
+Django Unchained,word,n-word,104.90
 Django Unchained,word,bitch,104.97
-Django Unchained,word,n-word ,105.62
-Django Unchained,word,n-word ,106.12
+Django Unchained,word,n-word,105.62
+Django Unchained,word,n-word,106.12
 Django Unchained,word,ass,108.38
-Django Unchained,word,n-word ,108.48
-Django Unchained,word,n-word ,108.65
-Django Unchained,word,n-word ,109.12
-Django Unchained,word,n-word ,109.18
-Django Unchained,word,n-word ,109.20
+Django Unchained,word,n-word,108.48
+Django Unchained,word,n-word,108.65
+Django Unchained,word,n-word,109.12
+Django Unchained,word,n-word,109.18
+Django Unchained,word,n-word,109.20
 Django Unchained,word,goddamn,109.33
 Django Unchained,word,goddamn,111.33
 Django Unchained,word,damn,111.53
-Django Unchained,word,n-word ,112.08
+Django Unchained,word,n-word,112.08
 Django Unchained,word,shit,112.08
 Django Unchained,word,fucked,112.08
 Django Unchained,word,motherfuckers,113.05
 Django Unchained,word,hell,113.22
 Django Unchained,word,ass,113.25
-Django Unchained,word,n-word ,113.50
-Django Unchained,word,n-word ,113.97
-Django Unchained,word,n-word ,114.05
+Django Unchained,word,n-word,113.50
+Django Unchained,word,n-word,113.97
+Django Unchained,word,n-word,114.05
 Django Unchained,word,fuck,114.15
 Django Unchained,word,bitch,114.18
 Django Unchained,word,goddamn,114.93
@@ -1402,14 +1402,14 @@ Django Unchained,word,goddamn,117.85
 Django Unchained,word,jackass,120.65
 Django Unchained,word,ass,121.12
 Django Unchained,word,goddamn,121.12
-Django Unchained,word,n-word ,121.37
-Django Unchained,word,n-word ,121.67
-Django Unchained,word,n-word ,122.45
+Django Unchained,word,n-word,121.37
+Django Unchained,word,n-word,121.67
+Django Unchained,word,n-word,122.45
 Django Unchained,word,goddamn,122.60
 Django Unchained,word,ass,122.63
-Django Unchained,word,n-word ,123.42
+Django Unchained,word,n-word,123.42
 Django Unchained,word,shit,130.07
-Django Unchained,word,n-word ,130.38
+Django Unchained,word,n-word,130.38
 Django Unchained,word,ass,130.45
 Django Unchained,death,,131.27
 Django Unchained,death,,131.53
@@ -1422,7 +1422,7 @@ Django Unchained,death,,132.13
 Django Unchained,death,,132.13
 Django Unchained,death,,132.13
 Django Unchained,word,fucking,132.22
-Django Unchained,word,n-word ,131.73
+Django Unchained,word,n-word,131.73
 Django Unchained,word,shit,132.10
 Django Unchained,word,bitch,132.12
 Django Unchained,word,fucking,132.22
@@ -1432,9 +1432,9 @@ Django Unchained,word,fucking,132.35
 Django Unchained,word,damn,132.37
 Django Unchained,word,fuck,132.42
 Django Unchained,word,fuck,132.53
-Django Unchained,word,n-word ,132.55
+Django Unchained,word,n-word,132.55
 Django Unchained,death,,133.08
-Django Unchained,word,n-word ,133.17
+Django Unchained,word,n-word,133.17
 Django Unchained,word,motherfucker,133.27
 Django Unchained,death,,133.38
 Django Unchained,death,,133.38
@@ -1452,21 +1452,21 @@ Django Unchained,word,horseshit,135.43
 Django Unchained,word,ass,135.65
 Django Unchained,word,goddamn,135.70
 Django Unchained,word,bitch,135.78
-Django Unchained,word,n-word ,136.20
-Django Unchained,word,n-word ,138.30
+Django Unchained,word,n-word,136.20
+Django Unchained,word,n-word,138.30
 Django Unchained,word,ass,140.23
 Django Unchained,word,motherfuckers,140.25
 Django Unchained,word,ass,140.43
 Django Unchained,word,fucking,140.50
-Django Unchained,word,n-word ,140.68
+Django Unchained,word,n-word,140.68
 Django Unchained,word,shit,140.93
-Django Unchained,word,n-word ,140.97
+Django Unchained,word,n-word,140.97
 Django Unchained,word,shit,141.22
 Django Unchained,word,hell,141.25
-Django Unchained,word,n-word ,141.27
+Django Unchained,word,n-word,141.27
 Django Unchained,word,ass,141.52
 Django Unchained,word,ass,142.42
-Django Unchained,word,n-word ,142.43
+Django Unchained,word,n-word,142.43
 Django Unchained,word,fuck,143.68
 Django Unchained,word,fuck,144.20
 Django Unchained,word,ass,144.58
@@ -1477,10 +1477,10 @@ Django Unchained,word,shit,145.22
 Django Unchained,word,ass,145.53
 Django Unchained,word,fucking,147.20
 Django Unchained,word,damn,147.23
-Django Unchained,word,n-word ,147.48
+Django Unchained,word,n-word,147.48
 Django Unchained,word,fuck,147.62
 Django Unchained,word,goddamn,148.43
-Django Unchained,word,n-word ,148.57
+Django Unchained,word,n-word,148.57
 Django Unchained,word,fucking,149.02
 Django Unchained,death,,149.10
 Django Unchained,death,,149.10
@@ -1498,27 +1498,27 @@ Django Unchained,death,,156.77
 Django Unchained,word,bitch,157.30
 Django Unchained,death,,157.37
 Django Unchained,death,,157.85
-Django Unchained,word,n-word ,158.62
-Django Unchained,word,n-word ,158.65
+Django Unchained,word,n-word,158.62
+Django Unchained,word,n-word,158.65
 Django Unchained,word,shit,158.78
-Django Unchained,word,n-word ,158.78
+Django Unchained,word,n-word,158.78
 Django Unchained,word,motherfucker,158.90
 Django Unchained,word,damn,158.92
-Django Unchained,word,n-word ,158.98
+Django Unchained,word,n-word,158.98
 Django Unchained,word,horseshit,159.18
-Django Unchained,word,n-word ,159.25
+Django Unchained,word,n-word,159.25
 Django Unchained,word,bitch,159.33
 Django Unchained,word,motherfucker,159.37
-Django Unchained,word,n-word ,159.42
+Django Unchained,word,n-word,159.42
 Django Unchained,word,ass,159.53
-Django Unchained,word,n-word ,159.58
-Django Unchained,word,n-word ,159.65
+Django Unchained,word,n-word,159.58
+Django Unchained,word,n-word,159.65
 Django Unchained,word,ass,159.70
 Django Unchained,word,ass,159.77
-Django Unchained,word,n-word ,159.80
+Django Unchained,word,n-word,159.80
 Django Unchained,word,fucked,159.83
-Django Unchained,word,n-word ,159.88
-Django Unchained,word,n-word ,160.20
+Django Unchained,word,n-word,159.88
+Django Unchained,word,n-word,160.20
 Django Unchained,word,ass,160.28
 Django Unchained,death,,160.45
 Jackie Brown,word,ass,4.38
@@ -1528,75 +1528,75 @@ Jackie Brown,word,motherfucker,4.85
 Jackie Brown,word,shit,4.95
 Jackie Brown,word,shit,5.00
 Jackie Brown,word,motherfucker,5.28
-Jackie Brown,word,n-word ,5.37
-Jackie Brown,word,n-word ,5.45
+Jackie Brown,word,n-word,5.37
+Jackie Brown,word,n-word,5.45
 Jackie Brown,word,fucking,5.53
 Jackie Brown,word,damn,5.60
-Jackie Brown,word,n-word ,5.67
+Jackie Brown,word,n-word,5.67
 Jackie Brown,word,shit,5.70
-Jackie Brown,word,n-word ,6.02
+Jackie Brown,word,n-word,6.02
 Jackie Brown,word,motherfucker,6.08
 Jackie Brown,word,shit,6.18
 Jackie Brown,word,motherfucker,6.37
 Jackie Brown,word,ass,6.70
 Jackie Brown,word,shit,7.45
 Jackie Brown,word,shit,8.35
-Jackie Brown,word,n-word ,8.58
-Jackie Brown,word,n-word ,8.62
-Jackie Brown,word,n-word ,8.65
+Jackie Brown,word,n-word,8.58
+Jackie Brown,word,n-word,8.62
+Jackie Brown,word,n-word,8.65
 Jackie Brown,word,motherfucking,8.82
 Jackie Brown,word,motherfuckers,9.23
 Jackie Brown,word,bitch,9.97
 Jackie Brown,word,fuck,10.08
 Jackie Brown,word,fuck,10.12
 Jackie Brown,word,goddamn,10.20
-Jackie Brown,word,n-word ,10.20
+Jackie Brown,word,n-word,10.20
 Jackie Brown,word,goddamn,10.25
 Jackie Brown,word,motherfuckers,10.50
 Jackie Brown,word,shit,10.52
 Jackie Brown,word,motherfucking,10.53
 Jackie Brown,word,fuck,10.58
-Jackie Brown,word,n-word ,12.12
+Jackie Brown,word,n-word,12.12
 Jackie Brown,word,shit,12.82
 Jackie Brown,word,fuck,12.82
 Jackie Brown,word,ass,13.10
 Jackie Brown,word,fuck,15.63
-Jackie Brown,word,n-word ,15.68
-Jackie Brown,word,n-word ,15.72
+Jackie Brown,word,n-word,15.68
+Jackie Brown,word,n-word,15.72
 Jackie Brown,word,ass,15.98
 Jackie Brown,word,motherfucking,16.03
-Jackie Brown,word,n-word ,16.10
+Jackie Brown,word,n-word,16.10
 Jackie Brown,word,ass,16.20
-Jackie Brown,word,n-word ,16.23
+Jackie Brown,word,n-word,16.23
 Jackie Brown,word,goddamn,16.25
 Jackie Brown,word,shit,16.28
 Jackie Brown,word,ass,16.30
 Jackie Brown,word,ass,16.33
 Jackie Brown,word,motherfucking,16.35
-Jackie Brown,word,n-word ,16.38
+Jackie Brown,word,n-word,16.38
 Jackie Brown,word,motherfucker,16.47
 Jackie Brown,word,hell,16.52
 Jackie Brown,word,shit,16.55
 Jackie Brown,word,ass,16.58
 Jackie Brown,word,shit,16.65
-Jackie Brown,word,n-word ,16.77
+Jackie Brown,word,n-word,16.77
 Jackie Brown,word,fucking,16.87
-Jackie Brown,word,n-word ,17.12
+Jackie Brown,word,n-word,17.12
 Jackie Brown,word,ass,17.22
-Jackie Brown,word,n-word ,17.25
+Jackie Brown,word,n-word,17.25
 Jackie Brown,word,fuck,17.30
 Jackie Brown,word,shit,17.40
 Jackie Brown,word,fucking,17.42
 Jackie Brown,word,ass,17.48
 Jackie Brown,word,fucking,17.52
-Jackie Brown,word,n-word ,17.82
-Jackie Brown,word,n-word ,17.82
-Jackie Brown,word,n-word ,17.85
-Jackie Brown,word,n-word ,17.90
-Jackie Brown,word,n-word ,17.95
+Jackie Brown,word,n-word,17.82
+Jackie Brown,word,n-word,17.82
+Jackie Brown,word,n-word,17.85
+Jackie Brown,word,n-word,17.90
+Jackie Brown,word,n-word,17.95
 Jackie Brown,word,ass,18.23
 Jackie Brown,word,shit,18.38
-Jackie Brown,word,n-word ,18.80
+Jackie Brown,word,n-word,18.80
 Jackie Brown,word,shit,19.07
 Jackie Brown,word,motherfucker,19.35
 Jackie Brown,word,motherfucker,19.45
@@ -1608,15 +1608,15 @@ Jackie Brown,word,goddamn,19.72
 Jackie Brown,word,goddamn,19.83
 Jackie Brown,word,goddamn,19.93
 Jackie Brown,word,ass,19.95
-Jackie Brown,word,n-word ,20.05
+Jackie Brown,word,n-word,20.05
 Jackie Brown,word,motherfucker,20.12
 Jackie Brown,word,ass,20.17
 Jackie Brown,word,goddamn,20.22
 Jackie Brown,word,ass,20.28
 Jackie Brown,word,ass,20.35
-Jackie Brown,word,n-word ,20.38
+Jackie Brown,word,n-word,20.38
 Jackie Brown,word,fucking,20.52
-Jackie Brown,word,n-word ,20.57
+Jackie Brown,word,n-word,20.57
 Jackie Brown,word,shit,20.58
 Jackie Brown,word,fucking,20.65
 Jackie Brown,word,motherfucker,21.05
@@ -1625,16 +1625,16 @@ Jackie Brown,word,goddamn,21.13
 Jackie Brown,word,motherfucker,21.18
 Jackie Brown,word,hell,21.22
 Jackie Brown,death,,23.08
-Jackie Brown,word,n-word ,23.07
+Jackie Brown,word,n-word,23.07
 Jackie Brown,word,shit,25.53
 Jackie Brown,word,goddamn,26.13
 Jackie Brown,word,motherfucking,26.37
 Jackie Brown,word,ass,26.38
-Jackie Brown,word,n-word ,27.07
+Jackie Brown,word,n-word,27.07
 Jackie Brown,word,fuck,27.08
-Jackie Brown,word,n-word ,27.20
-Jackie Brown,word,n-word ,27.22
-Jackie Brown,word,n-word ,27.48
+Jackie Brown,word,n-word,27.20
+Jackie Brown,word,n-word,27.22
+Jackie Brown,word,n-word,27.48
 Jackie Brown,word,shitty,28.67
 Jackie Brown,word,fucking,28.72
 Jackie Brown,word,goddamn,29.05
@@ -1677,7 +1677,7 @@ Jackie Brown,word,shit,48.53
 Jackie Brown,word,shitload,48.60
 Jackie Brown,word,shitload,50.45
 Jackie Brown,word,dick,50.88
-Jackie Brown,word,n-word ,50.97
+Jackie Brown,word,n-word,50.97
 Jackie Brown,word,hell,51.03
 Jackie Brown,word,fuck,51.05
 Jackie Brown,word,fuck,51.10
@@ -1705,7 +1705,7 @@ Jackie Brown,word,shit,66.05
 Jackie Brown,word,fucking,67.82
 Jackie Brown,word,fuck,67.95
 Jackie Brown,word,damn,69.70
-Jackie Brown,word,n-word ,70.02
+Jackie Brown,word,n-word,70.02
 Jackie Brown,word,motherfuckers,70.03
 Jackie Brown,word,ass,70.05
 Jackie Brown,word,bullshit,70.10
@@ -1729,7 +1729,7 @@ Jackie Brown,word,shit,75.60
 Jackie Brown,word,bitch,75.63
 Jackie Brown,word,fucking,75.63
 Jackie Brown,word,fuck,75.70
-Jackie Brown,word,n-word ,75.70
+Jackie Brown,word,n-word,75.70
 Jackie Brown,word,damn,75.73
 Jackie Brown,word,fuck,75.77
 Jackie Brown,word,fucked,75.87
@@ -1855,14 +1855,14 @@ Jackie Brown,word,motherfucking,131.00
 Jackie Brown,word,motherfucker,131.08
 Jackie Brown,word,motherfucker,131.18
 Jackie Brown,word,shit,131.22
-Jackie Brown,word,n-word ,131.25
+Jackie Brown,word,n-word,131.25
 Jackie Brown,word,motherfucker,131.28
 Jackie Brown,word,goddamn,131.35
 Jackie Brown,word,motherfucker,131.38
 Jackie Brown,word,shit,131.40
 Jackie Brown,word,goddamn,131.45
 Jackie Brown,word,shit,131.57
-Jackie Brown,word,n-word ,131.80
+Jackie Brown,word,n-word,131.80
 Jackie Brown,word,motherfucking,132.78
 Jackie Brown,word,ass,133.05
 Jackie Brown,word,motherfucking,133.13
@@ -1872,20 +1872,20 @@ Jackie Brown,word,fucking,134.07
 Jackie Brown,word,ass,134.18
 Jackie Brown,word,motherfucker,134.33
 Jackie Brown,word,motherfucker,134.50
-Jackie Brown,word,n-word ,134.78
+Jackie Brown,word,n-word,134.78
 Jackie Brown,word,shit,135.00
 Jackie Brown,word,ass,135.67
 Jackie Brown,word,dumbass,135.72
 Jackie Brown,word,bullshit,136.72
 Jackie Brown,word,fucking,136.90
 Jackie Brown,word,ass,137.13
-Jackie Brown,word,n-word ,137.13
+Jackie Brown,word,n-word,137.13
 Jackie Brown,word,goddamn,138.20
 Jackie Brown,word,bullshit,141.03
 Jackie Brown,word,bitch,141.20
 Jackie Brown,word,goddamn,141.23
 Jackie Brown,word,motherfucker,141.35
-Jackie Brown,word,n-word ,141.50
+Jackie Brown,word,n-word,141.50
 Jackie Brown,word,motherfucker,141.55
 Jackie Brown,word,motherfucker,141.80
 Jackie Brown,word,motherfucker,141.93
