@@ -732,3 +732,17 @@ fill: rgb(255, 255, 255);
     opacity: 0.5;
     font-size: smaller;
 }
+
+/* Footer */
+footer{
+    max-width: 500px; 
+    text-align: center; 
+    margin: 5em auto;
+    font-size: 0.8em;
+    display: grid;
+    gap: 0.8em;
+}
+
+footer small{
+    opacity: 0.5;
+}
